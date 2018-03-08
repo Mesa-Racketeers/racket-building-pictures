@@ -9,13 +9,17 @@ strong {
 code {
   padding-left: 2px;
   padding-right: 2px;
-  background-color: lightgray;  
+  background-color: lightgray;
 }
 
 code.block {
   width: 80em;
   padding: 2px;
-  margin: 1em;  
+  margin: 1em;
   background-color: lightgray;
   display: block;
+}
+
+.smallPrint {
+  font-size: 6pt;
 }
