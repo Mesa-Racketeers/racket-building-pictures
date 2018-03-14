@@ -1,21 +1,83 @@
-h1, h2, h3, h4, h5, h5 {
-  font-family: sans-serif;
+* {
+    box-sizing: border-box;
 }
 
-strong {
-    font-weight: bolder;
+body {
+    margin: 0;
+}
+
+.header {
+    background-color: #0000;
+    color: black;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 10px;
+}
+
+h2 {
+    font-family: sans-serif;
+}
+
+.footer {
+    font-size: 8px;
+    background-color: lightgray;
+    color: black;
+    padding: 5px;
+}
+
+.column {
+    float: left;
+    padding: 15px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.sidemenu {
+    width: 25%;
+}
+
+.content {
+    width: 75%;
+}
+
+.sidemenu ul {
+    font-family: monospace;
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: fixed;
+
+}
+
+.sidemenu li a {
+    margin-bottom: 0;
+    display: block;
+    padding: 8px 16px;
+    background-color: #f1f1f1;
+    text-decoration: none;
+    color: #666;
+}
+
+
+/* Change the link color on hover */
+.sidemenu li a:hover {
+    background-color: lightgray;
+    color: white;
+}
+
+.sidemenu li a.active {
+    background-color: #ebebeb;
+    color: white;
 }
 
 code {
-  padding-left: 2px;
-  padding-right: 2px;
-  background-color: lightgray;
-}
-
-code.block {
-  width: 80em;
-  padding: 2px;
-  margin: 1em;
+  margin: 10px;
   background-color: lightgray;
   display: block;
 }
