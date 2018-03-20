@@ -22,53 +22,70 @@
     <div class="header">
       <h1>Building Pictures with Racket
       <img src="https://racket-lang.org/img/racket-logo.svg" width="25px"/></h1>
-        <p style="text-align:center;"><i>
-      By Rowan Weir, Daniel Barnas, Allan Schougaard
-    </i></p>
+        <p style="text-align:center;">
+          <em>By Rowan Weir, Daniel Barnas, Allan Schougaard</em>
+        </p>
     </div>
-    <h2 id="Introduction"> Introduction</h2>
-    <p>
-      Dr. Racket provides many tools and primitives to allow you to design ever more complex and
-      elaborate illustrations without needing to source them from elsewhere. We will begin by
-      introducing the simplest primitives and build up from there.
-      <br>
-      <img src="images/Hello.png" />
-    <p><h2 id="Simple Shapes">Simple Shapes</h2>
-    <p>
-      By Rowan Weir, Daniel Barnas, Professor Allan Schougaard
+    <section>
+      <h2 id="Introduction"> Introduction</h2>
+      <p>
+        Dr. Racket provides many tools and primitives to allow you to design ever more complex and
+        elaborate illustrations without needing to source them from elsewhere. We will begin by
+        introducing the simplest primitives and build up from there.
+        <br>
+        <img src="images/Hello.png" />
+      </p>
+      <p>
+        TODO:
+        How to install Dr. Racket and the rest of the Racket system...
+        Click on the green Try it buttons to try the code on Dr. Racket.
+      </p>
+    </section>
 
-    One of the easiest shapes to draw in Dr. Racket is the circle. It's primitive requires you
-    to specify the radius of the circle (in pixels), the mode ("solid" or "outline"), and the color, in that order.
-    <code>
-      (circle radius mode color) === image
-    </code>
-    Let us construct our first shape in Dr. Racket using the following:
-    <code>
-      (circle 25 "solid" "red")
-    </code>
-    As expected, the resulting image is that of a solid red circle of radius 25 pixels.
+    <section>
+      <h2 id="Simple Shapes">Simple Shapes</h2>
+      <p>
+        One of the easiest shapes to draw in Dr. Racket is the circle. It's primitive requires you
+        to specify the radius of the circle (in pixels), the mode ("solid" or "outline"), and the color, in that order.
+        <code>
+          (circle radius mode color) === image
+        </code>
+        Let us construct our first shape in Dr. Racket using the following:
+      </p>
+      <p>
+        <code>
+          (circle 25 "solid" "red")
+        </code>
+        <a href="src/circle.rkt" download>
+          <span class="try-it">Try it</span>
+        </a>
+      </p>
+      <p>
+        As expected, the resulting image is that of a solid red circle of radius 25 pixels.
 
-    If we switch the mode to "outline," we get the following outline of a circle:
-    <code>
-      (circle 25 "outline" "red")
-    </code>
-    Try tinkering with the radius and notice the effect on the circle's size. Feel free to play around with the color as well.
+        If we switch the mode to "outline," we get the following outline of a circle:
+        <code>
+          (circle 25 "outline" "red")
+        </code>
+        Try tinkering with the radius and notice the effect on the circle's size. Feel free to play around with the color as well.
 
-    The simplicity of circles is that their radius is the same in all directions. What if instead we'd like to draw an elongated circle, or an ellipse? The ellipse function is very similar to the circle, except that now we need to specify a width (horizontal length) and a height (vertical length).
-    <code>
-    (ellipse width height mode color)
-    </code>
+        The simplicity of circles is that their radius is the same in all directions. What if instead we'd like to draw an elongated circle, or an ellipse? The ellipse function is very similar to the circle, except that now we need to specify a width (horizontal length) and a height (vertical length).
+        <code>
+        (ellipse width height mode color)
+        </code>
 
-    Let us type in the following to create our first ellipse:
+        Let us type in the following to create our first ellipse:
 
-    <code>
-    (ellipse 50 25 "solid" "pink")
-    </code>
+        <code>
+        (ellipse 50 25 "solid" "pink")
+        </code>
 
-    Can you tell which argument corresponds to the width? Which argument corresponds to the height?
+        Can you tell which argument corresponds to the width? Which argument corresponds to the height?
 
-    How do the width and height of this ellipse compare to the circles we created above? Why do you think the circles are so much larger?
-    </p>
+        How do the width and height of this ellipse compare to the circles we created above? Why do you think the circles are so much larger?
+      </p>
+    </section>
+
       <h2 id="Polygons">Polygons</h2>
     <p>
       We will now go over some of the more popular shape primitives available in Dr. Racket and how to use them.
