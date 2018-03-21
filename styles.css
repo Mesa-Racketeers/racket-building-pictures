@@ -77,9 +77,14 @@ h2 {
 }
 
 code {
+  background-color: lightgray;
+}
+
+.block{
   margin: 10px;
   background-color: lightgray;
   display: block;
+
 }
 
 .smallPrint {

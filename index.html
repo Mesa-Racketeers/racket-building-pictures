@@ -39,29 +39,30 @@
 
     One of the easiest shapes to draw in Dr. Racket is the circle. It's primitive requires you
     to specify the radius of the circle (in pixels), the mode ("solid" or "outline"), and the color, in that order.
-    <code>
+    <code class="block">
       (circle radius mode color) === image
     </code>
     Let us construct our first shape in Dr. Racket using the following:
-    <code>
+    <code class="block">
       (circle 25 "solid" "red")
     </code>
+    <img  class="block" src="images/red-circle.png" />
     As expected, the resulting image is that of a solid red circle of radius 25 pixels.
 
     If we switch the mode to "outline," we get the following outline of a circle:
-    <code>
+    <code class="block">
       (circle 25 "outline" "red")
     </code>
     Try tinkering with the radius and notice the effect on the circle's size. Feel free to play around with the color as well.
 
     The simplicity of circles is that their radius is the same in all directions. What if instead we'd like to draw an elongated circle, or an ellipse? The ellipse function is very similar to the circle, except that now we need to specify a width (horizontal length) and a height (vertical length).
-    <code>
+    <code class="block">
     (ellipse width height mode color)
     </code>
 
     Let us type in the following to create our first ellipse:
 
-    <code>
+    <code class="block">
     (ellipse 50 25 "solid" "pink")
     </code>
 
@@ -76,15 +77,15 @@
       <h3 id="Squares">Squares</h3>
 
       The easiest polygon to draw and visualize is the square. It takes a numerical value for the side-length followed by the usual mode and color arguments from the "circle" and "ellipse" functions above.
-      <code>
+      <code class="block">
       (square side-len mode color)
       </code>
 
-      <code>
+      <code class="block">
       (square 25 "solid" "blue")
       </code>
 
-      <code>
+      <code class="block">
       (square 25 "outline" "blue")
       </code>
 
@@ -94,11 +95,11 @@
 
       The next logical shape to draw is the rectangle. By now the general outline for the functions used to define shapes should be becoming familiar.
 
-      <code>
+      <code class="block">
       (rectangle width height mode color)
       </code>
 
-      <code>
+      <code class="block">
       (rectangle 50 25 "solid" "green")
       </code>
 
@@ -114,25 +115,25 @@
       As you may recall from high school, equilateral triangles are those whose three sides are of equal length, and whose three angles, by extension, are also congruent.
 
       Consequently, to draw an equilateral triangle, it is enough to simply specify the desired side length, followed by the usual mode and color arguments.
-      <code>
+      <code class="block">
       (triangle side-length mode color)
       </code>
 
-      <code>
+      <code class="block">
       (triangle 25 "solid" "yellow")
       </code>
 
-      <code>
+      <code class="block">
       (triangle 25 "outline" "yellow")
       </code>
 
       The next simplest triangle to construct is a right triangle, which as you may recall, is any triangle that contains a 90 degree angle. To construct a right triangle, you need to provide the two side-lengths of the sides exactly adjacent to the right angle.
 
-      <code>
+      <code class="block">
       (right-triangle     side-length1     side-length2     mode     color)
       </code>
 
-      <code>
+      <code class="block">
       (right-triangle 50 25 "solid" "orange")
       </code>
 
@@ -142,25 +143,25 @@
 
       Dr. Racket also  provides functions to design various star designs. The simplest star available is the traditional five-pointed star that is available by calling the star function.
 
-      <code>
+      <code class="block">
       (star side-length mode color)
       </code>
 
       Here is an example:
 
-      <code>
+      <code class="block">
       (star 25 "solid" "purple")
       </code>
 
       The radial-star function allows for even more creativity, at the cost of a more complicated function call.
 
-      <code>
+      <code class="block">
       (radial-star     point-count     inner-radius     outer-radius     mode     color)
       </code>
 
       The point-count is an integer value to determine how many points you'd like your star to have. The inner-radius determines the radius of the body of the star, while the outer radius determines the radius of the tips of the points of the star. The mode and color arguments are the same as for all the shapes above.
 
-      <code>
+      <code class="block">
       (radial-star 15 50 25 "solid" "violet")
       </code>
 
@@ -168,23 +169,23 @@
 
       If you'd like to construct shapes with more that three of four sides, Dr. Racket makes it easy with the regular-polygon function. With this function, you can easily construct anything from pentagons, to octagons, to regular polygons with any number of sides, and of any side length.
 
-      <code>
+      <code class="block">
       (regular-polygon     side-length     side-count     mode      color)
       </code>
 
-      <code>
+      <code class="block">
       (regular-polygon 20 8 "solid" "palegreen")
       </code>
 
       Coincidentally, there is one more type of star we can construct while on the topic of regular polygons, and that is the star-polygon. The star-polygon is almost exactly the same as a regular polygon, except that it takes one more argument, the step-count. Instead of each vertex connecting to the one next to it, it instead connects to the vertex that is step-count vertices away, creating a star-like design.
 
-      <code>
+      <code class="block">
       (star-polygon     side-length     side-count     step-count     mode     color)
       </code>
 
       Here's an example:
 
-      <code>
+      <code class="block">
       (star-polygon 50 10 3 "outline" "indigo")
       </code>
     </p>
