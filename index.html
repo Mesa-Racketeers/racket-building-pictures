@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
 <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
 <div class="clearfix">
   <div class="column sidemenu">
     <ul>
@@ -22,70 +25,97 @@
     <div class="header">
       <h1>Building Pictures with Racket
       <img src="https://racket-lang.org/img/racket-logo.svg" width="25px"/></h1>
-        <p style="text-align:center;"><i>
-      By Rowan Weir, Daniel Barnas, Allan Schougaard
-    </i></p>
+        <p style="text-align:center;">
+          <em>By Rowan Weir, Daniel Barnas, Allan Schougaard</em>
+        </p>
     </div>
-    <h2 id="Introduction"> Introduction</h2>
-    <p>
-      Dr. Racket provides many tools and primitives to allow you to design ever more complex and
-      elaborate illustrations without needing to source them from elsewhere. We will begin by
-      introducing the simplest primitives and build up from there.
-      <br>
-      <img src="images/Hello.png" />
-    <p><h2 id="Simple Shapes">Simple Shapes</h2>
-    <p>
-      By Rowan Weir, Daniel Barnas, Professor Allan Schougaard
 
-    One of the easiest shapes to draw in Dr. Racket is the circle. It's primitive requires you
-    to specify the radius of the circle (in pixels), the mode ("solid" or "outline"), and the color, in that order.
-    <code class="block">
-      (circle radius mode color) === image
-    </code>
-    Let us construct our first shape in Dr. Racket using the following:
-    <code class="block">
-      (circle 25 "solid" "red")
-    </code>
-    <img  class="block" src="images/red-circle.png" />
-    As expected, the resulting image is that of a solid red circle of radius 25 pixels.
+    <section>
+      <h2 id="Introduction"> Introduction</h2>
+      <p>
+        Dr. Racket provides many tools and primitives to allow you to design ever more complex and
+        elaborate illustrations without needing to source them from elsewhere. We will begin by
+        introducing the simplest primitives and build up from there.
+        <br>
+        <img src="images/Hello.png" />
+      </p>
 
-    If we switch the mode to "outline," we get the following outline of a circle:
-    <code class="block">
-      (circle 25 "outline" "red")
-    </code>
-    Try tinkering with the radius and notice the effect on the circle's size. Feel free to play around with the color as well.
+      <p>
+        TODO:
+        How to install Dr. Racket and the rest of the Racket system...
+        Click on the green Try it buttons to try the code on Dr. Racket.
+      </p>
 
-    The simplicity of circles is that their radius is the same in all directions. What if instead we'd like to draw an elongated circle, or an ellipse? The ellipse function is very similar to the circle, except that now we need to specify a width (horizontal length) and a height (vertical length).
-    <code class="block">
-    (ellipse width height mode color)
-    </code>
+    </section>
 
-    Let us type in the following to create our first ellipse:
+    <section>
 
-    <code class="block">
-    (ellipse 50 25 "solid" "pink")
-    </code>
+      <h2 id="Simple Shapes">Simple Shapes</h2>
 
-    Can you tell which argument corresponds to the width? Which argument corresponds to the height?
+      <p>
+        One of the easiest shapes to draw in Dr. Racket is the circle. It's primitive requires you
+        to specify the radius of the circle (in pixels), the mode ("solid" or "outline"), and the color, in that order.
+        <code>
+          (circle radius mode color) -> image
+        </code>
+        Let us construct our first shape in Dr. Racket using the following:
+      </p>
 
-    How do the width and height of this ellipse compare to the circles we created above? Why do you think the circles are so much larger?
-    </p>
-      <h2 id="Polygons">Polygons</h2>
+      <p>
+        <code>
+          (circle 25 "solid" "red")
+        </code>
+
+        <a href="src/circle.rkt" download>
+        <span class="try-it">Try it</span>
+        </a>
+      </p>
+
+      <p>
+        As expected, the resulting image is that of a solid red circle of radius 25 pixels.
+        If we switch the mode to "outline," we get the following outline of a circle:
+
+        <code>
+          (circle 25 "outline" "red")
+        </code>
+
+        Try tinkering with the radius and notice the effect on the circle's size. Feel free to play around with the color as well.
+        The simplicity of circles is that their radius is the same in all directions. What if instead we'd like to draw an elongated circle, or an ellipse? The ellipse function is very similar to the circle, except that now we need to specify a width (horizontal length) and a height (vertical length).
+
+        <code>
+        (ellipse width height mode color)
+        </code>
+
+        Let us type in the following to create our first ellipse:
+
+        <code>
+        (ellipse 50 25 "solid" "pink")
+        </code>
+
+        Can you tell which argument corresponds to the width? Which argument corresponds to the height?
+
+        How do the width and height of this ellipse compare to the circles we created above? Why do you think the circles are so much larger?
+      </p>
+
+    </section>
+
+      <h2 id="Polygons"> Polygons </h2>
     <p>
       We will now go over some of the more popular shape primitives available in Dr. Racket and how to use them.
 
       <h3 id="Squares">Squares</h3>
 
       The easiest polygon to draw and visualize is the square. It takes a numerical value for the side-length followed by the usual mode and color arguments from the "circle" and "ellipse" functions above.
-      <code class="block">
+
+      <code>
       (square side-len mode color)
       </code>
 
-      <code class="block">
+      <code>
       (square 25 "solid" "blue")
       </code>
 
-      <code class="block">
+      <code>
       (square 25 "outline" "blue")
       </code>
 
@@ -95,11 +125,11 @@
 
       The next logical shape to draw is the rectangle. By now the general outline for the functions used to define shapes should be becoming familiar.
 
-      <code class="block">
+      <code>
       (rectangle width height mode color)
       </code>
 
-      <code class="block">
+      <code>
       (rectangle 50 25 "solid" "green")
       </code>
 
@@ -108,32 +138,33 @@
 
       <h3 id= "Triangles">Triangles</h3>
 
-      You may recall from your high school geometry class that there are multiple types of triangles depending on how many side-lengths were equivalent. For the purposes of simplicity, we will only be going over equilateral triangles as well as right triangles.
+      There are multiple types of triangles depending on how many side-lengths were equivalent. For the purposes of simplicity, we will only be going over equilateral triangles as well as right triangles.
 
       For more information on triangles and how you would go about designing more involved triangles, we invite you to read through the Dr. Racket documentation on triangles.
 
       As you may recall from high school, equilateral triangles are those whose three sides are of equal length, and whose three angles, by extension, are also congruent.
 
       Consequently, to draw an equilateral triangle, it is enough to simply specify the desired side length, followed by the usual mode and color arguments.
-      <code class="block">
+
+      <code>
       (triangle side-length mode color)
       </code>
 
-      <code class="block">
+      <code>
       (triangle 25 "solid" "yellow")
       </code>
 
-      <code class="block">
+      <code>
       (triangle 25 "outline" "yellow")
       </code>
 
       The next simplest triangle to construct is a right triangle, which as you may recall, is any triangle that contains a 90 degree angle. To construct a right triangle, you need to provide the two side-lengths of the sides exactly adjacent to the right angle.
 
-      <code class="block">
+      <code>
       (right-triangle     side-length1     side-length2     mode     color)
       </code>
 
-      <code class="block">
+      <code>
       (right-triangle 50 25 "solid" "orange")
       </code>
 
@@ -143,25 +174,25 @@
 
       Dr. Racket also  provides functions to design various star designs. The simplest star available is the traditional five-pointed star that is available by calling the star function.
 
-      <code class="block">
+      <code>
       (star side-length mode color)
       </code>
 
       Here is an example:
 
-      <code class="block">
+      <code>
       (star 25 "solid" "purple")
       </code>
 
       The radial-star function allows for even more creativity, at the cost of a more complicated function call.
 
-      <code class="block">
+      <code>
       (radial-star     point-count     inner-radius     outer-radius     mode     color)
       </code>
 
       The point-count is an integer value to determine how many points you'd like your star to have. The inner-radius determines the radius of the body of the star, while the outer radius determines the radius of the tips of the points of the star. The mode and color arguments are the same as for all the shapes above.
 
-      <code class="block">
+      <code>
       (radial-star 15 50 25 "solid" "violet")
       </code>
 
@@ -169,29 +200,26 @@
 
       If you'd like to construct shapes with more that three of four sides, Dr. Racket makes it easy with the regular-polygon function. With this function, you can easily construct anything from pentagons, to octagons, to regular polygons with any number of sides, and of any side length.
 
-      <code class="block">
+      <code>
       (regular-polygon     side-length     side-count     mode      color)
       </code>
 
-      <code class="block">
+      <code>
       (regular-polygon 20 8 "solid" "palegreen")
       </code>
 
       Coincidentally, there is one more type of star we can construct while on the topic of regular polygons, and that is the star-polygon. The star-polygon is almost exactly the same as a regular polygon, except that it takes one more argument, the step-count. Instead of each vertex connecting to the one next to it, it instead connects to the vertex that is step-count vertices away, creating a star-like design.
 
-      <code class="block">
+      <code>
       (star-polygon     side-length     side-count     step-count     mode     color)
       </code>
 
       Here's an example:
 
-      <code class="block">
+      <code>
       (star-polygon 50 10 3 "outline" "indigo")
       </code>
     </p>
-
-
-
 
 <div class="footer">
   <h6>Copywright Notice</h6>
