@@ -90,3 +90,14 @@ code {
 .smallPrint {
   font-size: 6pt;
 }
+
+.try-it {
+  text-decoration: none;
+  font-family: sans-serif;
+  background-color: lightgreen;
+  margin-right: 80%;
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
