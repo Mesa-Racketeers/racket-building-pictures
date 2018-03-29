@@ -1,2 +1,0 @@
-; Circle with radius, contents, color
-(circle 25 "solid" "red")

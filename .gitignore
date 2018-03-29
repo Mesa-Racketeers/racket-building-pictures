@@ -1,0 +1,9 @@
+# See https://help.github.com/articles/ignoring-files for more about ignoring files.
+#
+
+# Mac filesystem files
+.DS_Store
+
+# Dr. Racket work files
+*.1
+*.bak
