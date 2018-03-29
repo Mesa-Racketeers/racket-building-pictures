@@ -7,3 +7,6 @@
 # Dr. Racket work files
 *.1
 *.bak
+
+# Emacs
+*~
