@@ -77,15 +77,19 @@ h2 {
     color: white;
 }
 
+
 code {
   background-color: lightgray;
 }
 
+p {
+  font-family: sans-serif;
+}
+
 .block{
-  margin: 10px;
+  margin: 20px;
   background-color: lightgray;
   display: block;
-
 }
 
 .smallPrint {
@@ -94,11 +98,11 @@ code {
 
 .try-it {
   text-decoration: none;
-  font-family: sans-serif;
-  background-color: lightgreen;
+  font-family: monospace;
+  background-color: lightgray;
   margin-right: 80%;
   padding: 2px;
-  border-width: 1px;
+  border-width: 0px;
   border-style: solid;
-  border-radius: 5px;
+  border-radius: 0px;
 }
