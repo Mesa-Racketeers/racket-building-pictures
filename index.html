@@ -273,6 +273,111 @@
       </code>
       </p>
 
+      <h2 id="Text">Text</h2>
+
+      <p>What if you wanted to add words to your images. Given the primitives
+        above, you could try to construct letters one piece at a time. Luckily,
+        you don't have to go through all that trouble. Dr. Racket has the
+        functionality that allows you to create stylized text which is treated
+        as an image.
+        <br>
+        <br>
+        The contract for the text function is as follows:
+
+        <code class="block">
+        (text string font-size color)
+        </code>
+
+        Let's give it a try:
+
+        <code class="block">
+        (text "Rose" 24 "hotpink")
+        </code>
+
+        What if you'd like to play around with different fonts? Dr. Racket has
+        you covered with the followed function.
+
+        <code class="block">
+        (text/font  string   font-size   color   face    family     style    weight    underline?)
+        </code>
+
+        Here's an example of how this might be used:
+
+        <code class="block">
+        (text/font "Violet" 18 "blueviolet" #f 'modern 'italic 'normal #f)
+        </code>
+
+        <code class="block">
+        (text/font "Daisy" 22 "turquoise" #f 'system 'normal 'bold #t)
+        </code>
+      </p>
+
+      <h2 id="Color">Color</h2>
+
+      <p> Dr. Racket comes with many default colors that you can use in the form
+         of strings such as "blue", "red", or "turquoise." The Dr. Racket color
+         database, located at the following link, has many predefined colors
+         that you can choose from.
+         <br>
+         <br>
+         But what if you'd like to use a color that's not in the database?
+         Fortunately, Dr. Racket provides us with a method to create almost any
+         color we can imagine.
+
+         <code class="block">
+         make-color (red green blue alpha)
+         </code>
+
+         Like most computer graphics systems, Dr. Racket represents colors as a
+         mix of red, green, and blue. The value of each color is a whole number
+         that ranges from 0 to 255. To get black, you would set red, green, and
+         blue each to 0. To get white, you would set each to 255. Every color in
+         between would be a mix of those three colors.
+         <br>
+         <br>
+         Let's see an example:
+
+         <code class="block">
+        (circle 25 "solid" (make-color 255 215 0 255)) ; add one with RGB
+        </code>
+
+        Did the circle appear in the color you expected? Why or why not? What
+        effect do you think the fourth input (255) had on the color?
+        <br>
+        <br>
+        You may have noticed the fourth input parameter alpha. This parameter
+        alpha is used to determine the opacity of the color. A value of 255
+        gives you a fully opaque (non-transparent) color. The closer you get to
+        0, the more transparent your image becomes.
+        <br>
+        <br>
+        Go ahead an play around with the values of red, green, blue, and alpha
+        in the example above to get a feel for how the parameters affect the
+        outcome.
+        <br>
+        <br>
+        What if you'd like to tweak one of Dr. Racket's predetermined colors
+        because it's a shade away from the color you'd like. You could play
+        around with make-color until you come close. But it may save you a lot
+        of effort to know the values of the parameters that make up the
+        predetermined color. Dr. Racket provides a handy function that offers
+        just that.
+        <br>
+        <br>
+        What are the values of red, green, and blue that make up the color
+        "aqua?" Let's find out:
+
+        <code class="block">
+          (name->color "aqua")
+          (make-color 0 255 255 255)
+        </code>
+
+        Did it surprise you that aqua is just as blue as it is green?
+      </p>
+
+
+
+
 <div class="footer">
   <h6>Copywright Notice</h6>
   <p>MIT License
