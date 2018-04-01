@@ -36,8 +36,6 @@
       illustrations.
       <br>
       <br>
-      <img src="images/Hello.png" />
-      <br>
       <br>
       The functions available in these libraries can be placed into a few broad categories for easier understanding and use.
     </p>
@@ -80,6 +78,12 @@
     <code class="block">
       (circle 80 "outline" "red")
     </code>
+
+    <br>
+    <br>
+    <img src="images/red-circle-outline.png"/>
+    <br>
+    <br>
 
     Try changing the radius and observe the effect on the circle's size.
     Experiment with different colors as well.
@@ -201,10 +205,19 @@
       <code class="block">
       (triangle 150 "solid" "yellow")
       </code>
-
+      <br>
+      <br>
+      <img src="images/yellow-triangle.png"/>
+      <br>
+      <br>
       <code class="block">
       (triangle 150 "outline" "yellow")
       </code>
+      <br>
+      <br>
+      <img src="images/yellow-triangle-outline.png"/>
+      <br>
+      <br>
 
       The next simplest triangle to construct is a right triangle, which as you may recall, is any triangle that contains a 90 degree angle. To construct a right triangle, you need to provide the two side-lengths of the sides exactly adjacent to the right angle.
 
@@ -215,6 +228,11 @@
       <code class="block">
       (right-triangle 200 100 "solid" "orange")
       </code>
+      <br>
+      <br>
+      <img src="images/orange-right-triangle.png"/>
+      <br>
+      <br>
 
       Again, we invite you to experiment with the various triangle definitions such as isosceles-triangle or triangle/sss. Each of these allows you to specify certain side-lengths and angles, and the variety is virtually limitless.
 
@@ -234,7 +252,11 @@
       <code class="block">
       (star 100 "solid" "purple")
       </code>
-
+      <br>
+      <br>
+      <img src="images/purple-star.png"/>
+      <br>
+      <br>
       The radial-star function allows for even more creativity, at the cost of a more complicated function call.
 
       <code class="block">
@@ -246,6 +268,11 @@
       <code class="block">
       (radial-star 15 50 25 "solid" "violet")
       </code>
+      <br>
+      <br>
+      <img src="images/radial-star.png"/>
+      <br>
+      <br>
       </p>
 
       <h3 id = "Regular Polygons">Regular Polygons</h3>
@@ -259,6 +286,11 @@
       <code class="block">
       (regular-polygon 20 8 "solid" "palegreen")
       </code>
+      <br>
+      <br>
+      <img src="images/green-polygon.png"/>
+      <br>
+      <br>
 
       Coincidentally, there is one more type of star we can construct while on the topic of regular polygons, and that is the star-polygon. The star-polygon is almost exactly the same as a regular polygon, except that it takes one more argument, the step-count. Instead of each vertex connecting to the one next to it, it instead connects to the vertex that is step-count vertices away, creating a star-like design.
 
@@ -271,6 +303,11 @@
       <code class="block">
       (star-polygon 50 10 3 "outline" "indigo")
       </code>
+      <br>
+      <br>
+      <img src="images/star-polygon.png"/>
+      <br>
+      <br>
       </p>
 
       <h2 id="Text">Text</h2>
@@ -293,6 +330,12 @@
         <code class="block">
         (text "Rose" 24 "hotpink")
         </code>
+        <br>
+        <br>
+        <img src="images/rose-text.png"/>
+        <br>
+        <br>
+
 
         What if you'd like to play around with different fonts? Dr. Racket has
         you covered with the followed function.
@@ -306,10 +349,20 @@
         <code class="block">
         (text/font "Violet" 18 "blueviolet" #f 'modern 'italic 'normal #f)
         </code>
+        <br>
+        <br>
+        <img src="images/violet-text.png"/>
+        <br>
+        <br>
 
         <code class="block">
         (text/font "Daisy" 22 "turquoise" #f 'system 'normal 'bold #t)
         </code>
+        <br>
+        <br>
+        <img src="images/daisy-text.png"/>
+        <br>
+        <br>
       </p>
 
       <h2 id="Color">Color</h2>
@@ -340,6 +393,9 @@
          <code class="block">
         (circle 25 "solid" (make-color 255 215 0 255)) ; add one with RGB
         </code>
+        <br>
+        <br>
+
 
         Did the circle appear in the color you expected? Why or why not? What
         effect do you think the fourth input (255) had on the color?
