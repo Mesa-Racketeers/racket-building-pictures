@@ -431,7 +431,106 @@
         Did it surprise you that aqua is just as blue as it is green?
       </p>
 
+      <h2 id="Editing">Editing</h2>
 
+      <p>The ability to use Dr. Racket's built-in primitives to create images is
+         very versatile and useful. The sky is the limit with the images you can
+          create. But what if you would like to bring an image from an external
+          source into your program? Fortunately, Dr. Racket makes this extremely
+          simple.
+          <br>
+          <br>
+          To bring an outside image into your program, simply click on Insert up
+           at the top of the Dr. Racket screen, and select Insert Image... From
+           the directory prompt that appears, search for the image file that you
+            would like to add. Upon opening the file, the image should simply
+            appear where the cursor is located.
+          <br>
+          <br>
+          Once the image is inside of Dr. Racket, you can simply copy and paste
+          the image directly to place it in your code. Dr. Racket will then
+          treat the image as if it were part of the code itself.
+          <br>
+          <br>
+          As an example, we will take an image of a bee and assign it to a
+          constant called "bee." Doing so will allow us to manipulate the image
+          directly without having to copy and paste the image of the bee each
+          time.
+
+          <code class="block">
+          (define bee
+          <img src="images/bee.png">
+          )
+          </code>
+
+          You can define multiple constants to hold different images that can
+          then be combined to create highly elaborate scenes and images.
+
+          <code class="block">
+            (define butterfly1
+            <img src="images/butterfly1.png">
+            )
+          </code>
+
+          <code class="block">
+            (define butterfly2
+            <img src="images/butterfly2.png">
+            )
+          </code>
+
+          <code class="block">
+            (define butterfly3
+            <img src="images/butterfly3.png">
+            )
+          </code>
+
+          <code class="block">
+            (define butterfly4
+            <img src="images/butterfly4.png">
+            )
+          </code>
+
+          From now on in our code, we can refer to any of these images directly
+          by the constants assigned.
+          <br>
+          <br>
+          The ability to import external images directly into Dr. Racket is very
+           useful, but somewhat limited in and of itself. What if the image we
+           import is too large or too small? What if we'd like to rotate the
+           image or even flip it along an axis? The rest of this section deals
+           with the different tools available in Dr. Racket to edit images.
+           <br>
+           <br>
+           The first editing tool we will explore is the rotate function. The
+           skeleton of the rotate function is as follows:
+
+           <code class="block">
+             rotate : number image -> image
+           </code>
+
+           This function rotates an image in the counterclockwise direction by
+           the number of degrees specified. Let's try it on the bee:
+
+           <code class="block">
+             (rotate 30 bee)
+           </code>
+
+           To be sure, you can also rotate images in the clockwise direction usi
+           ng the rotate-cw function which has the same skeleton as the rotate
+           function.
+
+           <code class="block">
+             rotate-cw : number image -> image
+           </code>
+
+           Let's try it out on the bee.
+
+           <code class="block">
+             (rotate-cw 15 bee)
+           </code>
+
+           We also have the option to scale an image to make it larger or smaller
+      </p>
 
 
 <div class="footer">
