@@ -353,7 +353,16 @@
 
   <h2 id="Editing">Editing</h2>
   <p>
-    Functions in this category alter or change an image.
+    Let's start this section by bringing in an image from an external source.
+    To bring an outside image into your program, select the Insert menu at the top of the screen.
+    From there, click <i>'Insert Image ...'</i>.
+    Select the image file you would like to add from the directory prompt appears.
+    Upon opening the file, the image should appear where the cursor is located.
+    <br>
+    <br>
+    Once the image is inside your program, you can move your image to where you need it in your code by copying and pasting as normal.
+    You can also manipulate the image with one of the functions that allow you to alter or change an image.
+    Think of these functions classified as few major types, then having some variations for each type.
     Major types include:
     </p>
     <ul>
@@ -364,11 +373,59 @@
       <li><a>Rotate (spins an image a specified number of degrees)</li></a>
   </ul>
   <p>
-    There are also variations for many of these.
-    These variations more precisely how the image should be altered.
+    Variations of these functions more precisely define how the image should be altered.
     /xy
     /align
     Directional (-bottom, -top, etc.)
+    <br>
+    <br>
+    To try these out, we'll create an image constant called "bee".
+    This will make it easier to do different things wth the image without having to copy and paste the image of the bee each time.
+      <code class="block">
+        (define bee <img src="images/bee.png"> )
+      </code>
+    It's a good practice to define your images as constants, especially if you are using multiple images in a program.
+    They can then be combined to create elaborate scenes and images.
+    Let's do the same thing with a few other images we might want to use:
+      <code class="block">
+        (define butterfly1
+        <img src="images/butterfly1.png">
+        )
+      </code>
+      <code class="block">
+        (define butterfly2
+        <img src="images/butterfly2.png">
+        )
+      </code>
+      <code class="block">
+        (define butterfly3
+        <img src="images/butterfly3.png">
+        )
+      </code>
+      <code class="block">
+        (define butterfly4
+        <img src="images/butterfly4.png">
+        )
+      </code>
+    From now on in our code, we can refer to any of these images by the constants assigned.
+    <br>
+    <br>
+    The first editing tool we will explore is the rotate function.
+    Rotate requires two parameters:
+       <code class="block">
+         (rotate angle image)
+       </code>
+    This function rotates an image in the counterclockwise direction by the number of degrees specified.
+    Let's try it on the bee:
+       <code class="block">
+         (rotate 30 bee)
+       </code>
+    You can also rotate images in the clockwise direction using a variation of rotate, the rotate-cw function.
+    Let's try it out on the bee.
+       <code class="block">
+         (rotate-cw 15 bee)
+       </code>
+    We also have the option to scale an image to make it larger or smaller.
   </p>
 
 <!-- SECTION 6 -->
