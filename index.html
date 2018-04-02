@@ -8,6 +8,7 @@
 
 <body>
 
+<!-- sidebar -->
 <div class="clearfix">
   <div class="column sidemenu">
     <ul>
@@ -30,6 +31,8 @@
         </p>
     </div>
 
+<!-- INTRODUCTION -->
+
     <h2 id="Introduction"> Introduction</h2>
     <p>
       The 2htdp/images and picturing-programs libraries provide built-in functions and primitives that allow you to produce simple graphics and even build complex
@@ -41,274 +44,277 @@
     </p>
 
 
+<!-- SECTION 1 -->
 
     <h2 id="Simple Shapes">Simple Shapes</h2>
 
-    <p>
-    Let's start with a basic circle, one of the simplest shapes to create. A circle only requires three parameters: size, mode, and color.
-    We will see these parameters and this format repeated in the construction of other shapes, but what differentiates a circle is that the size is defined by the radius.
-    The radius is given as a number, denoting how many pixels used, which is typical for how size is defined in Racket.
-    The mode and color parameters don't change much between shapes, with <em>mode</em> describing whether the circle should be solid or an outline, and <em>color</em>, which we will discuss more in depth a little later.
+     <p>
+       Let's start with a basic circle, one of the simplest shapes to create. A circle only requires three parameters: size, mode, and color.
+       We will see these parameters and this format repeated in the construction of other shapes, but what differentiates a circle is that the size is defined by the radius.
+       The radius is given as a number, denoting how many pixels used, which is typical for how size is defined in Racket.
+       The mode and color parameters don't change much between shapes, with <em>mode</em> describing whether the circle should be solid or an outline, and <em>color</em>, which we will discuss more in depth a little later.
+       <code class="block">
+         (circle size mode color) -> image
+       </code>
+       What circle will be created with the following?
+       <code class="block">
+         (circle 80 "solid" "red")
+       </code>
+       Try for yourself by clicking this button:
+       <br>
+       <br>
+        <a class="try-it" href="src/circle.rkt" download>try it</a>
+       <br>
+       <br>
+       Was this your result?
+       <br>
+       <br>
+       <img src="images/red-circle.png"/>
+       <br>
+       <br>
+       As expected, the resulting image is that of a solid red circle of radius 25 pixels.
+       If we switch the mode to "outline," we get the following:
+       <code class="block">
+         (circle 80 "outline" "red")
+       </code>
+       Try changing the radius and observe the effect on the circle's size.
+       Experiment with different colors as well.
+       <br>
+       <br>
+       The simplicity of circles is that their radius is the same in all directions.
+       What if instead we wanted to draw an elongated circle, or an ellipse?
+       The ellipse function is very similar to making a circle, except that now we need to specify a width and a height.
+       <code class="block">
+         (ellipse width height mode color)
+       </code>
+       Let's try creating an ellipse:
+       <code class="block">
+         (ellipse 200 100 "solid" "pink")
+       </code>
+       What do we get?
+       <br>
+       <br>
+       <img src="images/pink-oval.png" />
+       <br>
+       <br>
+       Can you tell which argument corresponds to the width?
+       <br>
+       Which argument corresponds to the height?
+       <br>
+       How do the width and height of this ellipse compare to the circles we created above?
+       <br>
+       Why do you think the circles appear larger?
+     </p>
 
-    <code class="block">
-      (circle size mode color) -> image
-    </code>
-
-    What circle will be created with the following?
-
-    <code class="block">
-      (circle 80 "solid" "red")
-    </code>
-
-    Try it for yourself by clicking this button:
-    <br>
-    <br>
-    <a class="try-it" href="src/circle.rkt" download>try it</a>
-    <br>
-    <br>
-    Was this your result?
-    <br>
-    <br>
-    <img src="images/red-circle.png"/>
-    <br>
-    <br>
-    As expected, the resulting image is that of a solid red circle of radius 25 pixels.
-    If we switch the mode to "outline," we get the following:
-
-    <code class="block">
-      (circle 80 "outline" "red")
-    </code>
-
-    <br>
-    <br>
-    <img src="images/red-circle-outline.png"/>
-    <br>
-    <br>
-
-    Try changing the radius and observe the effect on the circle's size.
-    Experiment with different colors as well.
-    <br>
-    <br>
-    The simplicity of circles is that their radius is the same in all directions.
-    What if instead we'd like to draw an elongated circle, or an ellipse?
-    The ellipse function is very similar to the circle, except that now we need to specify a width and a height.
-
-    <code class="block">
-    (ellipse width height mode color)
-    </code>
-
-    Let's try creating an ellipse:
-
-    <code class="block">
-    (ellipse 200 100 "solid" "pink")
-    </code>
-
-    <br>
-    What do we get?
-    <br>
-    <br>
-    <img src="images/pink-oval.png" />
-    <br>
-    <br>
-    Can you tell which argument corresponds to the width?
-    <br>
-    Which argument corresponds to the height?
-    <br>
-    How do the width and height of this ellipse compare to the circles we created above?
-    <br>
-    Why do you think the circles appear larger?
-
-    </p>
+<!-- SECTION 2 -->
 
     <h2 id="Polygons">Polygons</h2>
 
       <p>
         Polygons are shapes with straight sides and angles.
-        Creating them in Dr. Racket involves a similar process to how we made our previous rounded shapes.
+        Creating them in Dr. Racket involves a process that is imilar to how we made our previous rounded shapes.
         Let's look at some of them in more detail.
       </p>
 
-      <h3 id="Squares">Squares</h3>
+<!-- section 2.1 -->
 
-      <p>
-      Like a circle, the square function requires a size, a given numerical value that specifies the length of a side.
-      This is followed by the mode and color, as before.
+      <em><h3 id="Squares">Squares</h3></em>
 
+        <p>
+          Like a circle, the square function requires a size, a given numerical value that specifies the length of a side.
+          This is followed by the mode and color, as before.
+          <code class="block">
+            (square side-len mode color)
+          </code>
+          Here's an example:
+          <code class="block">
+            (square 150 "solid" "blue")
+          </code>
+          And here's what is created:
+          <br>
+          <br>
+          <img src="images/blue-square.png" />
+          <br>
+          <br>
+          What about a square with a different mode?
+          <code class="block">
+            (square 150 "outline" "blue")
+          </code>
+          <img src="images/blue-square-outline.png" />
+          <br>
+          <br>
+          How does a square with a side length of 150 compare to a circle with a radius of 80?
+          Which would you expect to be larger? Why?
+        </p>
+
+<!-- section 2.2 -->
+
+      <em><h3 id="Rectangles">Rectangles</h3></em>
+
+        <p>
+          By now the general outline for the functions used to define shapes should be becoming familiar.
+          Can you guess what parameters might be needed to create a rectangle?
+          <code class="block">
+            (rectangle width height mode color)
+          </code>
+          <code class="block">
+            (rectangle 225 125 "solid" "green")
+          </code>
+          <img src="images/green-rectangle.png" />
+          <br>
+          <br>
+          How could you use the rectangle function to design a square identical to the blue square we produced above?
+        </p>
+
+<!-- section 2.3 -->
+
+      <em><h3 id="Triangles">Triangles</h3></em>
+
+        <p>
+          There are several varieties of triangles you can create with Dr. Racket.
+          We are going to cover two: equilateral triangles and right triangles.
+          <br>
+          Equilateral triangles have three sides of equal length, and whose three angles, by extension, are also equal.
+          Consequently, to draw an equilateral triangle, you simply specify the desired side length, followed by the usual mode and color parameters.
+          <code class="block">
+            (triangle side-length mode color)
+          </code>
+          <em>Examples:</em>
+          <code class="block">
+            (triangle 150 "solid" "yellow")
+          </code>
+          <img src="images/yellow-triangle.png"/>
+          <br>
+          <br>
+          A right triangle contains a 90 degree angle.
+          To construct a right triangle, you need to provide the two side-lengths of the sides adjacent to the right angle.
+          <code class="block">
+            (right-triangle side-length1 side-length2 mode color)
+          </code>
+          <code class="block">
+            (right-triangle 200 100 "solid" "orange")
+          </code>
+          <img src="images/orange-right-triangle.png"/>
+          <br>
+          <br>
+        </p>
+
+<!-- section 2.4 -->
+
+      <em><h3 id ="Stars">Stars</h3></em>
+        <p>
+          There are several functions that produce star designs.
+          The simplest star available is the traditional five-pointed star that is available by calling the star function.
+          <code class="block">
+            (star side-length mode color)
+          </code>
+          Here is an example:
+          <code class="block">
+            (star 100 "solid" "purple")
+          </code>
+          <img src="images/purple-star.png"/>
+          <br>
+          <br>
+          The radial-star function allows for even more creativity, at the cost of a more complicated function call.
+          <code class="block">
+            (radial-star point-count inner-radius outer-radius mode color)
+          </code>
+          The point-count is an integer value to determine how many points you'd like your star to have.
+          The inner-radius determines the radius of the body of the star, while the outer radius determines the radius of the tips of the points of the star.
+          The mode and color arguments are the same as for all the shapes above.
+          <code class="block">
+            (radial-star 15 50 25 "solid" "violet")
+          </code>
+          <img src="images/radial-star.png"/>
+          <br>
+          <br>
+          There is one more type of star we can construct, and that is the star-polygon.
+          The star-polygon is almost exactly the same as a regular polygon, except that it takes one more argument, the step-count.
+          Instead of each vertex connecting to the one next to it, it instead connects to the vertex that is step-count vertices away, creating a star-like design.
+          <code class="block">
+            (star-polygon side-length side-count step-count mode color)
+          </code>
+          Here's an example:
+          <code class="block">
+            (star-polygon 50 10 3 "outline" "indigo")
+          </code>
+          <img src="images/star-polygon.png"/>
+        </p>
+
+<!-- section 2.5 -->
+
+      <em><h3 id = "Other Polygons">Other Polygons</h3></em>
+        <p>
+          If you want to construct shapes with more than three or four sides, you can use the regular-polygon function.
+          With this function, you can construct regular polygons with any number of sides, and of any side length.
+          This is how we construct pentagons, hexagons, octagons or any other many-sided shape.
+          <code class="block">
+            (regular-polygon side-length side-count mode color)
+          </code>
+          <code class="block">
+            (regular-polygon 20 8 "solid" "palegreen")
+          </code>
+          <img src="images/green-polygon.png"/>
+        </p>
+
+<!-- SECTION 3 -->
+
+  <h2 id="Text">Text</h2>
+    <p>
+      Text can be created with the text function, which requires a string, a font size, and a color.
       <code class="block">
-      (square side-len mode color)
+        (text string font-size color)
       </code>
-
-      Here's an example:
-
       <code class="block">
-      (square 150 "solid" "blue")
-      </code>
-
-      And here's what is created:
-      <br>
-      <br>
-      <img src="images/blue-square.png" />
-      <br>
-      <br>
-
-      What does about a square with a different mode?
-
-      <code class="block">
-      (square 150 "outline" "blue")
-      </code>
-
-      <img src="images/blue-square-outline.png" />
-      <br>
-      <br>
-
-      How does a square of side length 25 compare to a circle of radius 25?
-      Which would you expect to be larger? Why?
-
-      </p>
-
-      <h3 id="Rectangles">Rectangles</h3>
-
-      <p>
-      The next logical shape to draw is the rectangle. By now the general outline for the functions used to define shapes should be becoming familiar.
-
-      <code class="block">
-      (rectangle width height mode color)
-      </code>
-
-      <code class="block">
-      (rectangle 225 125 "solid" "green")
-      </code>
-
-
-      <br>
-      <br>
-      <img src="images/green-rectangle.png" />
-      <br>
-      <br>
-
-      Could you think of a way to use the rectangle function to design square identical to the blue squares we drew above?
-
-      </p>
-
-      <h3 id="Triangles">Triangles</h3>
-
-      <p>
-      There are several varieties of triangles you can create with Dr. Racket, but for the purposes of simplicity, we will equilateral triangles as well as right triangles.
-      For more information on triangles and how you would go about designing more involved triangles, we invite you to read through the Dr. Racket documentation on triangles.
-      As you may recall from high school, equilateral triangles are those whose three sides are of equal length, and whose three angles, by extension, are also congruent.
-      Consequently, to draw an equilateral triangle, it is enough to simply specify the desired side length, followed by the usual mode and color arguments.
-
-      <code class="block">
-      (triangle side-length mode color)
-      </code>
-
-      <code class="block">
-      (triangle 150 "solid" "yellow")
-      </code>
-      <br>
-      <br>
-      <img src="images/yellow-triangle.png"/>
-      <br>
-      <br>
-      <code class="block">
-      (triangle 150 "outline" "yellow")
-      </code>
-      <br>
-      <br>
-      <img src="images/yellow-triangle-outline.png"/>
-      <br>
-      <br>
-
-      The next simplest triangle to construct is a right triangle, which as you may recall, is any triangle that contains a 90 degree angle. To construct a right triangle, you need to provide the two side-lengths of the sides exactly adjacent to the right angle.
-
-      <code class="block">
-      (right-triangle side-length1 side-length2 mode color)
-      </code>
-
-      <code class="block">
-      (right-triangle 200 100 "solid" "orange")
-      </code>
-      <br>
-      <br>
-      <img src="images/orange-right-triangle.png"/>
-      <br>
-      <br>
-
-      Again, we invite you to experiment with the various triangle definitions such as isosceles-triangle or triangle/sss. Each of these allows you to specify certain side-lengths and angles, and the variety is virtually limitless.
-
-      </p>
-
-      <h3 id ="Stars">Stars</h3>
-
-      <p>
-      Dr. Racket also  provides functions to design various star designs. The simplest star available is the traditional five-pointed star that is available by calling the star function.
-
-      <code class="block">
-      (star side-length mode color)
-      </code>
-
-      Here is an example:
-
-      <code class="block">
-      (star 100 "solid" "purple")
-      </code>
-      <br>
-      <br>
-      <img src="images/purple-star.png"/>
-      <br>
-      <br>
-      The radial-star function allows for even more creativity, at the cost of a more complicated function call.
-
-      <code class="block">
-      (radial-star point-count inner-radius outer-radius mode color)
-      </code>
-
-      The point-count is an integer value to determine how many points you'd like your star to have. The inner-radius determines the radius of the body of the star, while the outer radius determines the radius of the tips of the points of the star. The mode and color arguments are the same as for all the shapes above.
-
-      <code class="block">
-      (radial-star 15 50 25 "solid" "violet")
-      </code>
-      <br>
-      <br>
-      <img src="images/radial-star.png"/>
-      <br>
-      <br>
-      </p>
-
-      <h3 id = "Regular Polygons">Regular Polygons</h3>
-      <p>
-      If you'd like to construct shapes with more that three of four sides, Dr. Racket makes it easy with the regular-polygon function. With this function, you can easily construct anything from pentagons, to octagons, to regular polygons with any number of sides, and of any side length.
-
-      <code class="block">
-      (regular-polygon     side-length     side-count     mode      color)
-      </code>
-
-      <code class="block">
-      (regular-polygon 20 8 "solid" "palegreen")
+        (text "Rose" 50 "hotpink")
       </code>
       <br>
+      <img src="images/rose-text.png"/>
       <br>
-      <img src="images/green-polygon.png"/>
       <br>
-      <br>
-
-      Coincidentally, there is one more type of star we can construct while on the topic of regular polygons, and that is the star-polygon. The star-polygon is almost exactly the same as a regular polygon, except that it takes one more argument, the step-count. Instead of each vertex connecting to the one next to it, it instead connects to the vertex that is step-count vertices away, creating a star-like design.
-
+      More detailed text formatting can be accomplished by using the text/font function.
+      It takes a variety of parameters that allow you to control individual aspects of how your text looks.
       <code class="block">
-      (star-polygon     side-length     side-count     step-count     mode     color)
+        (text/font string font-size color face family style weight underline?)
       </code>
-
-      Here's an example:
-
       <code class="block">
-      (star-polygon 50 10 3 "outline" "indigo")
+        (text/font "Violet" 50 "blueviolet" #f 'modern 'italic 'normal #f)
       </code>
-      <br>
-      <br>
-      <img src="images/star-polygon.png"/>
-      <br>
-      <br>
-      </p>
+      <img src="images/violet-text.png"/>
+      <code class="block">
+        (text/font "Daisy" 50 "turquoise" #f 'system 'normal 'bold #t)
+      </code>
+      <img src="images/daisy-text.png"/>
+    </p>
+
+<!-- SECTION 4 -->
+
+<h2 id="Color">Color</h2>
+<p>
+  On your screen, all colors are comprised of varying levels of red, green, and blue.
+  Using the function make-color, we can create a color by specifying these RGB channels.
+  <code class="block">
+    (make-color red green blue)
+  </code>
+  You can also specify the alpha, which controls the opacity or transparency of the color you are creating.
+  <code class="block">
+    (make-color red green blue alpha)
+  </code>
+  The name->color function accepts the name of a color (like those found on the color database) and returns the RGB alpha values.
+</p>
+
+<!-- SECTION 5 -->
+
+  <h2 id="Editing">Editing</h2>
+  <p>
+  </p>
+
+<!-- SECTION 6 -->
+
+  <h2 id="Placement">Placement</h2>
+  <p>
+    These functions control where, and in what order, images appear.
+  </p>
 
       <h2 id="Text">Text</h2>
 
