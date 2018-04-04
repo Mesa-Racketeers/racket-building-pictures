@@ -435,20 +435,236 @@
     The placement functions control where, and in what order, images appear.
     <br>
     Similar to the editing functions, there are variations for most of the functions in this category.
+    In this section, we are going to utilize our knowledge from what we've done previously in combination with new placement functions to build an image.
+    Specifically, a flower.
     <br>
+    First, we need to create some shapes.
+    You can create any shapes you want, in any size and color, but here's what we are going to be working with in our example.
+    You may want to stick close to the example this first time through and get more creative later.
+    <code class="block">
+      (radial-star 10 10 5 "solid" "palegreen")
+      <br>
+      (circle 8 "solid" "mediumaquamarine")
+      <br>
+      (circle 15 100 "lavender")
+      <br>
+      (ellipse 35 75 100 "violet")
+      <br>
+      (ellipse 50 100 100 "powderblue")
+    </code>
+    Can you picture what these shapes will look like based on the parameters that have been used?
+    <br>
+    Our first placement function is overlay.
+    <code class="block">
+      (overlay image1 image2 etc ...)
+    </code>
     With overlay, objects appear directly on top of one another, with the first listed being the top-most visible one, through to the last on the bottom.
     <br>
-    Underlay operates very similarly, but in reverse order, with the first image listed appearing underneath all others.
+    So let's create the center of our flower using this function.
+    <code class="block">
+      (define blue-flower
+      <br>
+        (overlay
+          <br>
+          (radial-star 10 10 5 "solid" "red")
+          <br>
+          (circle 8 "solid" "gold")
+          <br>
+          (circle 15 100 "lavender")
+          <br>
+        )
+        <br>
+      )
+    </code>
+    What is our result?
+    <br>
+    Like the editing functions, the placement functions have variations that allow greater specificity and level of control over where the image appears.
+    </p>
+    <ul>
+      <li><a>/align uses an xy to determine at what point the images are aligned.</li></a>
+      <li><a>/offset moves the image a certain amount on the x and y axis’.</li></a>
+      <li><a>/xy is similar but the images begin aligned at the top right (not the center).</li></a>
+    </ul>
+  <p>
+    Next we need to create the inner petals of our flower.
+    To do this, we will use an ellipse.
+    <code class="block">
+      (ellipse 25 50 100 "purple")
+    </code>
+    That's one petal.
+    But we need more, and we need them to surround the center of our flower.
+    What function can we use to accomplish this?
+    Maybe one of the functions we learned earlier?
+    <code class="block">
+      (rotate 25 (ellipse 35 75 100 "violet"))
+    </code>
+    Let's see what happens when we overlay the two:
+    <code class="block">
+      (overlay
+      <br>
+      (ellipse 35 50 100 "violet")
+      <br>
+      (rotate 25 (ellipse 35 75 100 "violet"))
+      <br>
+      )
+    </code>
+    Can you guess what we might add next?
+    <code class="block">
+      (overlay
+      <br>
+      (ellipse 35 50 100 "violet")
+      <br>
+      (rotate 25 (ellipse 35 75 100 "violet"))
+      <br>
+      (rotate 50 (ellipse 35 75 100 "violet"))
+      <br>
+      )
+    </code>
+    And what happens if we keep going?
+    <code class="block">
+      (overlay
+      <br>
+      (ellipse 35 50 100 "violet")
+      <br>
+      (rotate 25 (ellipse 35 75 100 "violet"))
+      <br>
+      (rotate 50 (ellipse 35 75 100 "violet"))
+      <br>
+      (rotate 75 (ellipse 35 75 100 "violet"))
+      <br>
+      (rotate 100 (ellipse 35 75 100 "violet"))
+      <br>
+      (rotate 125 (ellipse 35 75 100 "violet"))
+      <br>
+      (rotate 150 (ellipse 35 75 100 "violet"))
+      <br>
+      (rotate 175 (ellipse 35 75 100 "violet"))
+      <br>
+      )
+    </code>
+    Look at the result!
+    <br>
+    Now we can add our petals underneath the center of the flower.
+    <code class="block">
+      (define blue-flower
+      <br>
+        (overlay
+          <br>
+          (radial-star 10 10 5 "solid" "palegreen")
+          <br>
+          (circle 8 "solid" "mediumaquamarine")
+          <br>
+          (circle 15 100 "lavender")
+          <br>
+          (ellipse 35 50 100 "violet")
+          <br>
+          (rotate 25 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 50 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 75 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 100 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 125 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 150 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 175 (ellipse 35 75 100 "violet"))
+          <br>
+          )
+      <br>
+      )
+    </code>
+    Now, we want to add an outer series of petals, using our bigger ellipse.
+    It's not too difficult to see how we might duplicate our process with the inner petals.
+    <code class="block">
+      (define blue-flower
+      <br>
+        (overlay
+          <br>
+          (radial-star 10 10 5 "solid" "palegreen")
+          <br>
+          (circle 8 "solid" "mediumaquamarine")
+          <br>
+          (circle 15 100 "lavender")
+          <br>
+          (ellipse 35 50 100 "violet")
+          <br>
+          (rotate 25 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 50 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 75 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 100 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 125 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 150 (ellipse 35 75 100 "violet"))
+          <br>
+          (rotate 175 (ellipse 35 75 100 "violet"))
+          <br>
+          (ellipse 50 100 100 "powderblue")
+          <br>
+          (rotate 25 (ellipse 50 100 100 "powderblue"))
+          <br>
+          (rotate 50 (ellipse 50 100 100 "powderblue"))
+          <br>
+          (rotate 75 (ellipse 50 100 100 "powderblue"))
+          <br>
+          (rotate 100 (ellipse 50 100 100 "powderblue"))
+          <br>
+          (rotate 125 (ellipse 50 100 100 "powderblue"))
+          <br>
+          (rotate 150 (ellipse 50 100 100 "powderblue"))
+          <br>
+          (rotate 175 (ellipse 50 100 100 "powderblue"))
+          <br>
+          )
+      <br>
+      )
+    </code>
+    Take a look at our first flower!
+    Now, overlay is not the only way to combine shapes and images.
+    Underlay is another option.
+    <code class="block">
+      (underlay image1 image2 etc ...)
+    </code>
+    In addition to having a similar template, this function operates very similarly, but in reverse order, with the first image listed appearing underneath all others.
+    <br>
+    Let's try it out by making another flower.
+    <code class="block">
+      (define purple-rose
+      <br>
+        (underlay
+        <br>
+          (star-polygon 20 20 3 "solid" "mediumpurple")
+          <br>
+          (radial-star 20 60 50 "solid" "violet")
+          <br>
+          (rotate 18 (radial-star 15 50 30 "solid" "lightsteelblue"))
+          <br>
+          (circle 30 "solid" "plum")
+          <br>
+          (circle 25 "solid" "pink")
+          <br>
+          (radial-star 8 40 10 "solid" "peachpuff")
+          <br>
+        )
+        <br>
+      )
+    </code>
+    Here is what it looks like:
+    <br>
+    Do you see how the order of layers is reversed, as opposed to overlay?
+    <br>
+    Now we have two flowers.
+    What are our options for combining them in a scene?
     <br>
     Beside, as the name implies, places the first image beside another.
     <br>
     Above similarly places an image above another.
-    <br>
-    There are variations such as /align that allow greater specificity and level of control over where the image appears.
-    /align uses an xy to determine at what point the images are aligned.
-    /offset moves the image a certain amount on the x and y axis’.
-    /xy is similar but the images begin aligned at the top right (not the center).
-    <br>
     <br>
     Empty-scene creates an outlined white rectangle, a ‘scene’ on which to place things.
     <br>
