@@ -380,7 +380,7 @@
     <br>
     <br>
     To try these out, we'll create an image constant called "bee".
-    This will make it easier to do different things wth the image without having to copy and paste the image of the bee each time.
+    This will make it easier to do different things wth the image without having to copy and paste it each time.
       <code class="block">
         (define bee <img src="images/bee.png"> )
       </code>
@@ -433,17 +433,27 @@
   <h2 id="Placement">Placement</h2>
   <p>
     The placement functions control where, and in what order, images appear.
-    Similar to the editing functions, there
+    <br>
+    Similar to the editing functions, there are variations for most of the functions in this category.
+    <br>
     With overlay, objects appear directly on top of one another, with the first listed being the top-most visible one, through to the last on the bottom.
+    <br>
     Underlay operates very similarly, but in reverse order, with the first image listed appearing underneath all others.
+    <br>
     Beside, as the name implies, places the first image beside another.
+    <br>
     Above similarly places an image above another.
+    <br>
     There are variations such as /align that allow greater specificity and level of control over where the image appears.
-    /align uses an xy to determine at what point the images are aligned. /offset moves the image a certain amount on the x and y axis’.
+    /align uses an xy to determine at what point the images are aligned.
+    /offset moves the image a certain amount on the x and y axis’.
     /xy is similar but the images begin aligned at the top right (not the center).
-
+    <br>
+    <br>
     Empty-scene creates an outlined white rectangle, a ‘scene’ on which to place things.
+    <br>
     Place-image, from the textbook “Places image onto scene with its center at the coordinates (x,y) and crops the resulting image so that it has the same size as scene.
+    <br>
     The coordinates are relative to the top-left of scene.”
   </p>
 
