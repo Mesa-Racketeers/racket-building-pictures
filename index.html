@@ -56,7 +56,7 @@
        The radius is given as a number, denoting how many pixels used, which is typical for how size is defined in Racket.
        The mode and color parameters don't change much between shapes, with <i>mode</i> describing whether the circle should be solid or an outline, and <i>color</i>, which we will discuss more in depth a little later.
        <code class="block">
-         (circle size mode color) -> image
+         (circle size mode color) &rarr; image
        </code>
        What circle will be created with the following?
        <code class="block">
@@ -334,14 +334,24 @@
       Experiment with different values for red, green, blue, and alpha in the example above to get an idea for how you make different colors.
       <br>
       If you want to make changes to one of Dr. Racket's predetermined colors, the picturing-programs library provides a function that can help.
-      The <i>name->color</i> function accepts the name of a color, like those found in the color database, and returns the numerical values of the RGB and alpha channels.
+      The <i>name&rarr;color</i> function accepts the name of a color, like those found in the color database, and returns the numerical values of the RGB and alpha channels.
       <br>
       <br>
       Let's try it out with a color from the database.
       What values of red, green, and blue make up the color "plum?"
       <code class="block">
-        (name->color "plum")
+        (name&rarr;color "plum")
       </code>
+        What are the values of red, green, and blue that make up the color
+        "aqua?" Let's find out:
+
+        <code class="block">
+          (name&rarr;color "aqua")
+          (make-color 0 255 255 255)
+        </code>
+
+        Did it surprise you that aqua is just as blue as it is green?
+
       As you can see, the output of this function looks familiar.
       It comes in the form of the make-color function.
       <code class="block">
@@ -349,10 +359,167 @@
       </code>
       Why might this format be desirable as a result?
 
-<!-- SECTION 5 -->
 
+
+<!-- SECTION 5 -->
   <h2 id="Editing">Editing</h2>
-  <p>
+
+  <p> Up until now, we have merely created various shapes and images, and done
+     nothing to them. As it turns out, Dr. Racket provides a large selection
+      of editing tools that we can use on existing images. But before we
+      learn about these editing functions, it will be helpful to understand
+      how images can serve as arguments to functions.
+      <br>
+      <br>
+      A unique characteristic of coding in Dr. Racket is that Dr. Racket
+      allows you to insert actual images directly into your code. In this
+      case, we will copy and paste the circle we created up above directly
+      into the image-height function to obtain the height of the circle in
+      pixels.
+
+      <code class="block">
+        (image-height )
+      </code>
+
+      This may appear odd to some of you, but it is perfectly normal in
+      Dr. Racket.
+      <br>
+      <br>
+      Following the format used for image-height, use the image-width
+      function to obtain the width of the circle in pixels. How does the
+      result compare to the height of the image? Is this what you expected?
+      Why or why not?
+      <br>
+      <br>
+      Although you can copy and paste an image directly into your code, you
+      do not have to. If a function takes an argument of the image data type
+      , than any code that  returns an image will do.
+
+      <code class="block">
+        (image-height (circle 15 "red" "solid"))
+      </code>
+
+      This code above first creates the circle image, and then feeds it
+      directly into the image-height function. You don’t ever have to see
+      the image. This will come in handy shortly when we want to edit and
+      combine images.
+      <br>
+      <br>
+     The ability to use Dr. Racket's built-in primitives to create images is
+     very versatile and useful. The sky is the limit with the images you can
+      create. But what if you would like to bring an image from an external
+      source into your program? Fortunately, Dr. Racket makes this extremely
+      simple.
+
+      The ability to import external images directly into Dr. Racket is very
+       useful, but somewhat limited in and of itself. What if the image we
+       import is too large or too small? What if we'd like to rotate the
+       image or even flip it along an axis? The rest of this section deals
+       with the different tools available in Dr. Racket to edit images.
+       <br>
+       <br>
+       The first editing tool we will explore is the rotate function. The
+       skeleton of the rotate function is as follows:
+
+       <code class="block">
+         rotate : number image &rarr; image
+       </code>
+
+       This function rotates an image in the counterclockwise direction by
+       the number of degrees specified. Let's try it on the bee:
+
+       <code class="block">
+         (rotate 30 bee)
+       </code>
+
+       To be sure, you can also rotate images in the clockwise direction usi
+       ng the rotate-cw function which has the same skeleton as the rotate
+       function.
+
+       <code class="block">
+         rotate-cw : number image &rarr; image
+       </code>
+
+       Let's try it out on the bee.
+
+       <code class="block">
+         (rotate-cw 15 bee)
+       </code>
+
+       We also have the option to scale an image to make it larger or
+       smaller.  To do this we can use the scale function whose skeleton is
+       as follows:
+
+      <code class="block">
+        Scale: number image &rarr; image
+      </code>
+
+      The number you input is the scale factor. A number between 0 and 1
+      will result in an image smaller than the original, and a number larger
+       than 1 will result in an image larger than the original.
+       <br>
+       <br>
+       Let's see this in action:
+
+       <code class="block">
+         (scale .5 butterfly2)
+       </code>
+
+       <code class="block">
+         (scale 2 butterfly2)
+       </code>
+
+       If you would like to flip an image about either the horizonal or
+       vertical axis for a mirror image of your original image, you can use
+       either flip-horizontal or flip-vertical.
+       <br>
+       <br>
+       The skeletons of these are straight-forward:
+
+       <code class="block">
+         Flip-vertical: image &rarr; image
+       </code>
+
+       <code class="block">
+         (flip-vertical butterfly4)
+       </code>
+
+       <code class="block">
+         Flip-horizontal: image &rarr; image
+       </code>
+
+       <code class="block">
+        (flip-horizontal bee)
+       </code>
+
+       The last major editing tool is the collection of cropping functions
+       available in Dr. Racket. The most useful ones are probably the
+       following:
+
+       <code class="block">
+        Crop-left:  image number(pixels) &rarr; image
+       </code>
+
+       <code class="block">
+        Crop-right: image number(pixels) &rarr; image
+       </code>
+
+       <code class="block">
+        Crop-bottom: image number(pixels) &rarr; image
+       </code>
+
+       <code class="block">
+        Crop-top: image number(pixels) &rarr; image
+       </code>
+
+       As you may have guessed, these work by cropping the
+       left/right/top/bottom of a given image by the given number of pixels.
+
+       <code class="block">
+         (crop-right butterfly3 125)
+       </code>
+     </p>
+
     Let's start this section by bringing in an image from an external source.
     To bring an outside image into your program, select the Insert menu at the top of the screen.
     From there, click <i>'Insert Image ...'</i>.
@@ -539,7 +706,78 @@
     <code class="block">
       (define blue-flower
       <br>
+      Like the editing functions, the placement functions have variations that allow greater specificity and level of control over where the image appears.
+      </p>
+      <ul>
+        <li><a>/align uses an xy to determine at what point the images are aligned.</li></a>
+        <li><a>/offset moves the image a certain amount on the x and y axis’.</li></a>
+        <li><a>/xy is similar but the images begin aligned at the top right (not the center).</li></a>
+      </ul>
+    <p>
+      Next we need to create the inner petals of our flower.
+      To do this, we will use an ellipse.
+      <code class="block">
+        (ellipse 25 50 100 "purple")
+      </code>
+      That's one petal.
+      But we need more, and we need them to surround the center of our flower.
+      What function can we use to accomplish this?
+      Maybe one of the functions we learned earlier?
+      <code class="block">
+        (rotate 25 (ellipse 35 75 100 "violet"))
+      </code>
+      Let's see what happens when we overlay the two:
+      <code class="block">
         (overlay
+        <br>
+        (ellipse 35 50 100 "violet")
+        <br>
+        (rotate 25 (ellipse 35 75 100 "violet"))
+        <br>
+        )
+      </code>
+      Can you guess what we might add next?
+      <code class="block">
+        (overlay
+        <br>
+        (ellipse 35 50 100 "violet")
+        <br>
+        (rotate 25 (ellipse 35 75 100 "violet"))
+        <br>
+        (rotate 50 (ellipse 35 75 100 "violet"))
+        <br>
+        )
+      </code>
+      And what happens if we keep going?
+      <code class="block">
+        (overlay
+        <br>
+        (ellipse 35 50 100 "violet")
+        <br>
+        (rotate 25 (ellipse 35 75 100 "violet"))
+        <br>
+        (rotate 50 (ellipse 35 75 100 "violet"))
+        <br>
+        (rotate 75 (ellipse 35 75 100 "violet"))
+        <br>
+        (rotate 100 (ellipse 35 75 100 "violet"))
+        <br>
+        (rotate 125 (ellipse 35 75 100 "violet"))
+        <br>
+        (rotate 150 (ellipse 35 75 100 "violet"))
+        <br>
+        (rotate 175 (ellipse 35 75 100 "violet"))
+        <br>
+        )
+      </code>
+      Look at the result!
+      <br>
+      Now we can add our petals underneath the center of the flower.
+      <code class="block">
+        (define blue-flower
+        <br>
+          (overlay
+
           <br>
           (radial-star 10 10 5 "solid" "palegreen")
           <br>
@@ -657,11 +895,11 @@
     <br>
     Above similarly places an image above another.
     <br>
-    Empty-scene creates an outlined white rectangle, a ‘scene’ on which to place things.
+    Empty-scene creates an outlined white rectangle, a 'scene' on which to place things.
     <br>
     Place-image, from the textbook “Places image onto scene with its center at the coordinates (x,y) and crops the resulting image so that it has the same size as scene.
     <br>
-    The coordinates are relative to the top-left of scene.”
+    The coordinates are relative to the top-left of scene."
   </p>
 
 <div class="footer">
