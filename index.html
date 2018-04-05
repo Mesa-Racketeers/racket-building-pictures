@@ -439,7 +439,48 @@
 
       <h2 id="Editing">Editing</h2>
 
-      <p>The ability to use Dr. Racket's built-in primitives to create images is
+      <p> Up until now, we’ve merely created various shapes and images, and done
+         nothing to them. As it turns out, Dr. Racket provides a large selection
+          of editing tools that we can use on existing images. But before we
+          learn about these editing functions, it will be helpful to understand
+          how images can serve as arguments to functions.
+          <br>
+          <br>
+          A unique characteristic of coding in Dr. Racket is that Dr. Racket
+          allows you to insert actual images directly into your code. In this
+          case, we will copy and paste the circle we created up above directly
+          into the image-height function to obtain the height of the circle in
+          pixels.
+
+          <code class="block">
+            (image-height )
+          </code>
+
+          This may appear odd to some of you, but it is perfectly normal in
+          Dr. Racket.
+          <br>
+          <br>
+          Following the format used for image-height, use the image-width
+          function to obtain the width of the circle in pixels. How does the
+          result compare to the height of the image? Is this what you expected?
+          Why or why not?
+          <br>
+          <br>
+          Although you can copy and paste an image directly into your code, you
+          do not have to. If a function takes an argument of the image data type
+          , than any code that  returns an image will do.
+
+          <code class="block">
+            (image-height (circle 15 “red” “solid”))
+          </code>
+
+          This code above first creates the circle image, and then feeds it
+          directly into the image-height function. You don’t ever have to see
+          the image. This will come in handy shortly when we want to edit and
+          combine images.
+          <br>
+          <br>
+         The ability to use Dr. Racket's built-in primitives to create images is
          very versatile and useful. The sky is the limit with the images you can
           create. But what if you would like to bring an image from an external
           source into your program? Fortunately, Dr. Racket makes this extremely
@@ -535,9 +576,79 @@
              (rotate-cw 15 bee)
            </code>
 
-           We also have the option to scale an image to make it larger or smaller
-      </p>
+           We also have the option to scale an image to make it larger or
+           smaller.  To do this we can use the scale function whose skeleton is
+           as follows:
 
+          <code class="block">
+            Scale: number image -> image
+          </code>
+
+          The number you input is the scale factor. A number between 0 and 1
+          will result in an image smaller than the original, and a number larger
+           than 1 will result in an image larger than the original.
+           <br>
+           <br>
+           Let’s see this in action:
+
+           <code class="block">
+             (scale .5 butterfly2)
+           </code>
+
+           <code class="block">
+             (scale 2 butterfly2)
+           </code>
+
+           If you would like to flip an image about either the horizonal or
+           vertical axis for a mirror image of your original image, you can use
+           either flip-horizontal or flip-vertical.
+           <br>
+           <br>
+           The skeletons of these are straight-forward:
+
+           <code class="block">
+             Flip-vertical: image -> image
+           </code>
+
+           <code class="block">
+             (flip-vertical butterfly4)
+           </code>
+
+           <code class="block">
+             Flip-horizontal: image -> image
+           </code>
+
+           <code class="block">
+            (flip-horizontal bee)
+           </code>
+
+           The last major editing tool is the collection of cropping functions
+           available in Dr. Racket. The most useful ones are probably the
+           following:
+
+           <code class="block">
+            Crop-left:  image number(pixels) -> image
+           </code>
+
+           <code class="block">
+            Crop-right: image number(pixels) -> image
+           </code>
+
+           <code class="block">
+            Crop-bottom: image number(pixels) -> image
+           </code>
+
+           <code class="block">
+            Crop-top: image number(pixels) -> image
+           </code>
+
+           As you may have guessed, these work by cropping the
+           left/right/top/bottom of a given image by the given number of pixels.
+
+           <code class="block">
+             (crop-right butterfly3 125)
+           </code>
+         </p>
 
 <div class="footer">
   <h6>Copywright Notice</h6>
