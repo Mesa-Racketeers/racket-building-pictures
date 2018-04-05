@@ -91,6 +91,7 @@ h3 {
 
 code {
   background-color: lightgray;
+  white-space: pre-wrap;
 }
 
 p {

@@ -162,7 +162,7 @@
           <code class="block">
             (rectangle 225 125 "solid" "green")
           </code>
-          <img src="images/green-rectangle.png" />
+          <img src="images/green-rectangle.png"/>
           <br>
           <br>
           How could you use the rectangle function to design a square identical to the blue square we produced above?
@@ -277,11 +277,11 @@
         (text/font string font-size color face family style weight underline?)
       </code>
       <code class="block">
-        (text/font "Violet" 50 "blueviolet" #f 'modern 'italic 'normal #f)
+        (text/font "Violet" 50 "blueviolet" #f "modern" "italic" "normal" #f)
       </code>
       <img src="images/violet-text.png"/>
       <code class="block">
-        (text/font "Daisy" 50 "turquoise" #f 'system 'normal 'bold #t)
+        (text/font "Daisy" 50 "turquoise" #f "system" "normal" "bold" #t)
       </code>
       <img src="images/daisy-text.png"/>
     </p>
@@ -382,7 +382,7 @@
     To try these out, we'll create an image constant called "bee".
     This will make it easier to do different things wth the image without having to copy and paste it each time.
       <code class="block">
-        (define bee <img src="images/bee.png"> )
+        (define bee <img src="images/bee.png" width="100px"> )
       </code>
     It's a good practice to define your images as constants, especially if you are using multiple images in a program.
     They can then be combined to create elaborate scenes and images.
@@ -523,23 +523,14 @@
     And what happens if we keep going?
     <code class="block">
       (overlay
-      <br>
-      (ellipse 35 50 100 "violet")
-      <br>
-      (rotate 25 (ellipse 35 75 100 "violet"))
-      <br>
-      (rotate 50 (ellipse 35 75 100 "violet"))
-      <br>
-      (rotate 75 (ellipse 35 75 100 "violet"))
-      <br>
-      (rotate 100 (ellipse 35 75 100 "violet"))
-      <br>
-      (rotate 125 (ellipse 35 75 100 "violet"))
-      <br>
-      (rotate 150 (ellipse 35 75 100 "violet"))
-      <br>
-      (rotate 175 (ellipse 35 75 100 "violet"))
-      <br>
+        (ellipse 35 50 100 "violet")
+        (rotate 25 (ellipse 35 75 100 "violet"))
+        (rotate 50 (ellipse 35 75 100 "violet"))
+        (rotate 75 (ellipse 35 75 100 "violet"))
+        (rotate 100 (ellipse 35 75 100 "violet"))
+        (rotate 125 (ellipse 35 75 100 "violet"))
+        (rotate 150 (ellipse 35 75 100 "violet"))
+        (rotate 175 (ellipse 35 75 100 "violet"))
       )
     </code>
     Look at the result!
