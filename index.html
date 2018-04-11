@@ -413,6 +413,16 @@
       )
     </code>
     <code class="block">
+      (define jupiter
+      <img src="images/jupiter.png">
+      )
+    </code>
+    <code class="block">
+      (define mars
+      <img src="images/mars.png">
+      )
+    </code>
+    <code class="block">
       (define venus
       <img src="images/venus.png">
       )
@@ -491,8 +501,7 @@
     </code>
     <img src="images/jupiter-vert.png">
     The last of the major editing functions is the cropping function.
-    There are quite a few variations of this function available.
-    Variations more precisely define how the image should be altered.
+    There are a few variations of this function, which more precisely define how the image should be altered.
     <br>
     They include:
   </p>
@@ -508,7 +517,7 @@
       (crop-left image [number of pixels])
       (crop-right image [number of pixels])
     </code>
-    As you may have guessed, these work by cropping the specified section of a given image by the given number of pixels.
+    These functions work by cropping the specified section of a given image by the given number of pixels.
     For example:
     <code class="block">
       (crop-right moon 125)
@@ -522,46 +531,18 @@
   <p>
     The placement functions control where, and in what order, images appear.
     <br>
-    You can think of these functions as having few major types, then having some variations for each type.
+    You can think of these functions as having few major types, then some variations on each type.
     Major types include:
+  </p>
+  <ul>
+    <li><a>above</li></a>
+    <li><a>beside</li></a>
+    <li><a>overlay</li></a>
+    <li><a>underlay</li></a>
+    <li><a>place-image</li></a>
+  </ul>
+  <p>
     Similar to the editing functions, there are variations for most of the functions in this category.
-    In this section, we are going to utilize our knowledge from what we've done previously in combination with new placement functions to build an image.
-    Specifically, a star.
-    <br>
-    First, we need to create some shapes.
-    You can create any shapes you want, in any size and color, but here's what we are going to be working with in our example.
-    You may want to stick close to the example this first time through and get more creative later.
-    <code class="block">
-      (radial-star 10 10 5 "solid" "palegreen")
-      <br>
-      (circle 8 "solid" "mediumaquamarine")
-      <br>
-      (circle 15 100 "lavender")
-      <br>
-      (ellipse 35 75 100 "violet")
-      <br>
-      (ellipse 50 100 100 "powderblue")
-    </code>
-    Can you picture what these shapes will look like based on the parameters that have been used?
-    <br>
-    Our first placement function is overlay.
-    <code class="block">
-      (overlay image1 image2 etc ...)
-    </code>
-    With overlay, objects appear directly on top of one another, with the first listed being the top-most visible one, through to the last on the bottom.
-    <br>
-    So let's create the center of our flower using this function.
-    <code class="block">
-      (define blue-flower
-        (overlay
-          (radial-star 10 10 5 "solid" "red")
-          (circle 8 "solid" "gold")
-          (circle 15 100 "lavender")
-        )
-      )
-    </code>
-    What is our result?
-    <br>
     Like the editing functions, the placement functions have variations that allow greater specificity and level of control over where the image appears.
     </p>
     <ul>
@@ -570,128 +551,170 @@
       <li><a>/xy is similar but the images begin aligned at the top right (not the center).</li></a>
     </ul>
   <p>
-    Next we need to create the inner petals of our flower.
-    To do this, we will use an ellipse.
-    <code class="block">
-      (ellipse 25 50 100 "purple")
-    </code>
-    That's one petal.
-    But we need more, and we need them to surround the center of our flower.
-    What function can we use to accomplish this?
-    Maybe one of the functions we learned earlier?
-    <code class="block">
-      (rotate 25 (ellipse 35 75 100 "violet"))
-    </code>
-    Let's see what happens when we overlay the two:
-    <code class="block">
-      (overlay
-        (ellipse 35 50 100 "violet")
-        (rotate 25 (ellipse 35 75 100 "violet"))
-      )
-    </code>
-    Can you guess what we might add next?
-    <code class="block">
-      (overlay
-        (ellipse 35 50 100 "violet")
-        (rotate 25 (ellipse 35 75 100 "violet"))
-        (rotate 50 (ellipse 35 75 100 "violet"))
-      )
-    </code>
-    And what happens if we keep going?
-    <code class="block">
-      (overlay
-        (ellipse 35 50 100 "violet")
-        (rotate 25 (ellipse 35 75 100 "violet"))
-        (rotate 50 (ellipse 35 75 100 "violet"))
-        (rotate 75 (ellipse 35 75 100 "violet"))
-        (rotate 100 (ellipse 35 75 100 "violet"))
-        (rotate 125 (ellipse 35 75 100 "violet"))
-        (rotate 150 (ellipse 35 75 100 "violet"))
-        (rotate 175 (ellipse 35 75 100 "violet"))
-      )
-    </code>
-    Look at the result!
+    In this section, we are going to utilize our knowledge from what we've done previously in combination with new placement functions to build an image.
     <br>
-    Now we can add our petals underneath the center of the flower.
-      <code class="block">
-        (define blue-flower
-        <br>
-          (overlay
-            (radial-star 10 10 5 "solid" "palegreen")
-            (circle 8 "solid" "mediumaquamarine")
-            (circle 15 100 "lavender")
-            (ellipse 35 50 100 "violet")
-            (rotate 25 (ellipse 35 75 100 "violet"))
-            (rotate 50 (ellipse 35 75 100 "violet"))
-            (rotate 75 (ellipse 35 75 100 "violet"))
-            (rotate 100 (ellipse 35 75 100 "violet"))
-            (rotate 125 (ellipse 35 75 100 "violet"))
-            (rotate 150 (ellipse 35 75 100 "violet"))
-            (rotate 175 (ellipse 35 75 100 "violet"))
-          )
-      )
-    </code>
-    Now, we need to add an outer series of petals, using our bigger ellipse.
-    It's not too difficult to see how we might duplicate our process with the inner petals.
+    We have a couple options to place multiple images in a scene.
+    <br>
+    The function above takes a series of images, and places the first above the other in sequence.
     <code class="block">
-      (define blue-flower
+      (above image1 image2 ...)
+    </code>
+    <code class="block">
+      (above earth moon)
+    </code>
+    See how this function stacks everything vertically?
+    <br>
+    <br>
+    <img src="images/above-img.png">
+    <br>
+    To order our images horizontally, we can use the beside function.
+    <code class="block">
+      (beside image1 image2 ...)
+    </code>
+    This function returns your images ordered left to right.
+    <code class="block">
+      (beside mars neptune)
+    </code>
+    <img src="images/beside-img.png">
+    <br>
+    The above and beside functions have a variation we can call /align.
+    <code class="block">
+      (above/align x-place image1 image2 ...)
+    </code>
+    <code class="block">
+      (beside/align y-place image1 image2 ...)
+    </code>
+    Take a look at the first parameter for each of these functions.
+    above/align requires a string that specifies a place on the x-axis, such as "right" or "left", while beside/align requires a place on the y-axis like "top" or "bottom".
+    You might notice these are the same options available for the crop function.
+    <br>
+    Can you guess why they might need different axis'?
+    <br>
+    It might become more apparent when you see these functions in action.
+    <code class="block">
+      (above/align "right" venus saturn)
+    </code>
+    <img src="images/above-align.png">
+    <br>
+    Can you see how the x-place affected our result?
+    <br>
+    Experiment with the beside/align function and see how it differs.
+    <br>
+    What happens when you use images of very similar dimensions?
+    <br>
+    So far in this section, we have used images we brought in from an external source.
+    <br>
+    Let's try using the placement functions to build an image from shapes in the htdp/image library.
+    Specifically, a star.
+    First, we need to create some shapes.
+    You can create any shapes you want, in any size and color, but here's what we are going to be working with in our example.
+    You may want to stick close to the example this first time through and get more creative later.
+    <code class="block">
+      (radial-star 8 40 10 "solid" "mediumslateblue")
+      <br>
+      (rotate 18 (radial-star 15 50 30 60 "mediumslateblue"))
+      <br>
+      (circle 30 80 "mediumslateblue")
+      <br>
+      (circle 25 100 "mediumslateblue")
+    </code>
+    Can you picture what these shapes will look like based on the arguments that have been used?
+    <br>
+    What we want to do is place these images on top of each other.
+    The overlay function allows us to do exactly that.
+    <code class="block">
+      (overlay image1 image2 ...)
+    </code>
+    With overlay, objects appear directly on top of one another, with the first listed being the top-most visible one, through to the last on the bottom.
+    <br>
+    Let's try it out. Don't forget to name your image so that its easier to use later.
+    <code class="block">
+      (define purple-star
         (overlay
-          (radial-star 10 10 5 "solid" "palegreen")
-          (circle 8 "solid" "mediumaquamarine")
-          (circle 15 100 "lavender")
-          (ellipse 35 50 100 "violet")
-          (rotate 25 (ellipse 35 75 100 "violet"))
-          (rotate 50 (ellipse 35 75 100 "violet"))
-          (rotate 75 (ellipse 35 75 100 "violet"))
-          (rotate 100 (ellipse 35 75 100 "violet"))
-          (rotate 125 (ellipse 35 75 100 "violet"))
-          (rotate 150 (ellipse 35 75 100 "violet"))
-          (rotate 175 (ellipse 35 75 100 "violet"))
-          (ellipse 50 100 100 "powderblue")
-          (rotate 25 (ellipse 50 100 100 "powderblue"))
-          (rotate 50 (ellipse 50 100 100 "powderblue"))
-          (rotate 75 (ellipse 50 100 100 "powderblue"))
-          (rotate 100 (ellipse 50 100 100 "powderblue"))
-          (rotate 125 (ellipse 50 100 100 "powderblue"))
-          (rotate 150 (ellipse 50 100 100 "powderblue"))
-          (rotate 175 (ellipse 50 100 100 "powderblue"))
-          )
+        (radial-star 8 40 10 "solid" "mediumslateblue")
+        (rotate 18 (radial-star 15 50 30 60 "mediumslateblue"))
+        (circle 30 80 "mediumslateblue")
+        (circle 25 100 "mediumslateblue")
+        )
       )
     </code>
-    Take a look at our first flower!
-    Now, overlay is not the only way to combine shapes and images.
+    What does the result look like?
+    <img src="images/purple-star.png">
+    <br>
+    Now, overlay is not the only way to stack shapes and images.
     Underlay is another option.
     <code class="block">
-      (underlay image1 image2 etc ...)
+      (underlay image1 image2 ...)
     </code>
     In addition to having a similar template, this function operates very similarly, but in reverse order, with the first image listed appearing underneath all others.
     <br>
     Let's try it out by making another flower.
     <code class="block">
-      (define purple-rose
+      (define blue-star
         (underlay
-          (star-polygon 20 20 3 "solid" "mediumpurple")
-          (radial-star 20 60 50 "solid" "violet")
-          (rotate 18 (radial-star 15 50 30 "solid" "lightsteelblue"))
-          (circle 30 "solid" "plum")
-          (circle 25 "solid" "pink")
-          (radial-star 8 40 10 "solid" "peachpuff")
-        )
+          (rotate 18 (radial-star 30 45 25 100 "powderblue"))
+          (rotate 22.5 (regular-polygon 17 8 100 "violet"))
+          (circle 15 100 "lavender")
+          (circle 8 "solid" "skyblue")
+          (radial-star 10 10 5 "solid" "linen")
+          )
       )
     </code>
     Here is what it looks like:
+    <img src="images/blue-star.png">
     <br>
     Do you see how the order of layers is reversed, as opposed to overlay?
     <br>
-    Now we have two flowers.
-    What are our options for combining them in a scene?
+    Now we have two stars.
     <br>
-    Beside, as the name implies, places the first image beside another.
+    We want to create a scene with them and some of our previous images.
+    There are many options for placing our images in a scene.
+    But to do so, we are going to need to create a background on which to place them.
     <br>
-    Above similarly places an image above another.
+    The empty-scene function creates an outlined rectangle, a 'scene' on which to place things.
+    <code class="block">
+      (empty-scene width height color)
+    </code>
+    If you don't include a color, the scene will default to white.
     <br>
-    Empty-scene creates an outlined white rectangle, a 'scene' on which to place things.
+    But we probably want to use something a bit more detailed.
+    <code class="block">
+      (define sky
+      <br>
+      <img src="images/sky.png" width="90%">
+      <br>
+      )
+    </code>
     <br>
+    To do this, we can use overlay, underlay, or one of their many variations:
+    <code class="block">
+      (overlay/align x-place y-place image1 image2 ...)
+      (overlay/offset image1 x y image2)
+      (overlay/align/offset x-place y-place image1 x y image2)
+      (overlay/xy image1 x y image2)
+      <br>
+      (underlay/align x-place y-place image1 image2 ...)
+      (underlay/offset image1 x y image2)
+      (underlay/align/offset x-place y-place image1 x y image2)
+      (underlay/xy image1 x y image2)
+    </code>
+    As you can see, much like above and beside, overlay/align and underlay/align use and x-place and y-place to specify where to place an image in relation to another one.
+    However, these functions require both an x and y place.
+    Why might this be?
+    <br>
+    Overlay and underlay also have some variations we haven't encountered before.
+    The /offset variation actually works similarly to that of /align, but instead of using a place on a particular axis, the function takes a numerical value.
+    <br>
+    Given this fact, what do you think /align/offset might do?
+    <br>
+    The /xy variation may look similar to the previous functions, but it does something quite different.
+    Instead of determining the amount by which the image is offset or aligned on a particular axis, the x and y positions exactly place the image at those coordinates.
+    <br>
+    Now, there is one more major placement function we haven't covered: place-image.
+    <code class="block">
+      (place-image image x y scene)
+      (place-image/align image x y x-place y-place scene)
+    </code>
     Place-image, from the textbook “Places image onto scene with its center at the coordinates (x,y) and crops the resulting image so that it has the same size as scene.
     <br>
     The coordinates are relative to the top-left of scene."
