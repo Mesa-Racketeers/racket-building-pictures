@@ -12,6 +12,12 @@ img {
     margin-right: auto;
 }
 
+.question {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 24;
+}
+
 .header {
     background-color: #0000;
     color: black;
@@ -98,7 +104,7 @@ p {
 }
 
 .block{
-  margin: 20px;
+  margin: 10px 0px 10px 0px;
   background-color: lightgray;
   display: block;
 }
@@ -110,15 +116,12 @@ p {
 .try-it {
   text-decoration: none;
   font-family: monospace;
-  background-color: lightgray;
+  background-color: #f1f1f1;
   margin-right: 80%;
   padding: 2px;
-  border-width: 0px;
-  border-style: solid;
-  border-radius: 0px;
 }
 
 ul {
-    list-style-type: circle;
     font-family: sans-serif;
 }
+/* add question class */

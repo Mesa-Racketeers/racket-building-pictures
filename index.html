@@ -4,6 +4,7 @@
 
 <head>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -51,12 +52,12 @@
 
      <p>
        Let's start with a basic circle, one of the easiest shapes to create.
-       A circle only requires three parameters: size, mode, and color.
+       A circle only requires three parameters: size, mode, and color. <!-- make parameters code -->
        We will see these parameters and this format repeated in the construction of other shapes, but what differentiates a circle is that the size is defined by the radius.
        The radius is given as a number, denoting how many pixels used, which is typical for how size is defined in Racket.
        The mode and color parameters don't change much between shapes, with <i>mode</i> describing whether the circle should be solid or an outline, and <i>color</i>, which we will discuss more in depth a little later.
        <code class="block">
-         (circle size mode color) &rarr; image
+         (circle size mode color) -> image
        </code>
        What circle will be created with the following?
        <code class="block">
@@ -87,26 +88,34 @@
        What if instead we wanted to draw an elongated circle, or an ellipse?
        The ellipse function is very similar to that of a circle, except that now we need to specify a width and a height.
        <code class="block">
-         (ellipse width height mode color)
+         (ellipse width height mode color) <!-- add arrow -->
        </code>
        Let's try creating an ellipse:
        <code class="block">
          (ellipse 200 100 "solid" "pink")
        </code>
        What do we get?
+       </p>
        <br>
        <br>
        <img src="images/pink-oval.png" />
        <br>
+       <a class="try-it" style="text-align:center;" href="src/ellipse.rkt" download>try it</a>
        <br>
-       Can you tell which argument corresponds to the width?
+       <a class="fa fa-question-circle" style="font-size:24px"></a>
+       <a class="question">
+         Can you tell which argument corresponds to the width?
+       </a>
        <br>
-       Which argument corresponds to the height?
+       <a class="fa fa-question-circle" style="font-size:24px"></a>
+       <a class="question">
+         Which argument corresponds to the height?
+       </a>
        <br>
-       How do the width and height of this ellipse compare to the circles we created above?
-       <br>
-       Why do you think the circles appear larger?
-     </p>
+       <a class="fa fa-question-circle" style="font-size:24px"></a>
+       <a class="question">
+         How do the width and height of this ellipse compare to the circles we created above?
+       </a>
 
 <!-- SECTION 2 -->
 
@@ -123,15 +132,17 @@
       <i><h3 id="Squares">Squares</h3></i>
 
         <p>
-          Like a circle, the square function requires a size, a given numerical value that specifies the length of a side.
+          Like a circle, the square function requires a size.
+          In this case, the given numerical value specifies the length of a side.
           This is followed by the mode and color, as before.
           <code class="block">
-            (square side-len mode color)
+            (square side-length mode color) -> image
           </code>
           Here's an example:
           <code class="block">
             (square 150 "solid" "blue")
           </code>
+          <a class="try-it" href="src/square.rkt" download>try it</a>
           And here's what is created:
           <br>
           <br>
@@ -142,12 +153,21 @@
           <code class="block">
             (square 150 "outline" "blue")
           </code>
+          <a class="try-it" href="src/square-outline.rkt" download>try it</a>
           <img src="images/blue-square-outline.png" />
           <br>
           <br>
-          How does a square with a side length of 150 compare to a circle with a radius of 80?
-          Which would you expect to be larger? Why?
         </p>
+        <a class="fa fa-question-circle" style="font-size:24px"></a>
+        <a class="question">
+          How does a square with a side length of 150 compare to a circle with a radius of 80?
+        </a>
+        <br>
+        <a class="fa fa-question-circle" style="font-size:24px"></a>
+        <a class="question">
+          Which would you expect to be larger? Why?
+        </a>
+
 
 <!-- section 2.2 -->
 
@@ -157,16 +177,20 @@
           By now the general outline for the functions used to define shapes should be becoming familiar.
           Can you guess what parameters might be needed to create a rectangle?
           <code class="block">
-            (rectangle width height mode color)
+            (rectangle width height mode color) -> image
           </code>
           <code class="block">
             (rectangle 225 125 "solid" "green")
           </code>
+          <a class="try-it" href="src/rectangle.rkt" download>try it</a>
           <img src="images/green-rectangle.png"/>
           <br>
           <br>
-          How could you use the rectangle function to design a square identical to the blue square we produced above?
         </p>
+        <a class="fa fa-question-circle" style="font-size:24px"></a>
+        <a class="question">
+          How could you use the rectangle function to design a square identical to the blue square we produced above?
+        </a>
 
 <!-- section 2.3 -->
 
@@ -185,6 +209,7 @@
           <code class="block">
             (triangle 150 "solid" "yellow")
           </code>
+          <a class="try-it" href="src/triangle.rkt" download>try it</a>
           <img src="images/yellow-triangle.png"/>
           <br>
           <br>
@@ -196,6 +221,7 @@
           <code class="block">
             (right-triangle 200 100 "solid" "orange")
           </code>
+          <a class="try-it" href="src/right-triangle.rkt" download>try it</a>
           <img src="images/orange-right-triangle.png"/>
           <br>
         </p>
@@ -213,7 +239,7 @@
           <code class="block">
             (star 100 "solid" "purple")
           </code>
-          <img src="images/purple-star.png"/>
+          <img src="images/violet-star.png"/>
           <br>
           <br>
           The radial-star function is a bit more complicated, but produces a design of greater intricacy.
@@ -286,9 +312,6 @@
       <img src="images/venus-text.png"/>
     </p>
 
-
-
-
 <!-- SECTION 4 -->
 
   <h2 id="Color">Color</h2>
@@ -337,17 +360,17 @@
       Experiment with different values for red, green, blue, and alpha in the example above to get an idea for how you make different colors.
       <br>
       If you want to make changes to one of Dr. Racket's predetermined colors, the picturing-programs library provides a function that can help.
-      The <i>name&rarr;color</i> function accepts the name of a color, like those found in the color database, and returns the numerical values of the RGB and alpha channels.
+      The <i>name->color</i> function accepts the name of a color, like those found in the color database, and returns the numerical values of the RGB and alpha channels.
       <br>
       <br>
       Let's try it out with a color from the database.
       What values of red, green, and blue make up the color "plum?"
       <code class="block">
-        (name&rarr;color "plum")
+        (name->color "plum")
       </code>
       What are the values of red, green, and blue that make up the color "aqua?" Let's find out:
       <code class="block">
-          (name&rarr;color "aqua")
+          (name->color "aqua")
           (make-color 0 255 255 255)
       </code>
       Did it surprise you that aqua is just as blue as it is green?
@@ -356,7 +379,11 @@
       <code class="block">
         (make-color 221 160 221 255)
       </code>
-      Why might this format be desirable as a result?
+    </p>
+    <a class="fa fa-question-circle" style="font-size:24px"></a>
+    <a class="question">
+      Why might you want your result to be in the form of another function?
+    </a>
 
 <!-- SECTION 5 -->
   <h2 id="Editing">Editing</h2>
@@ -377,11 +404,11 @@
     Functions in this category include:
   </p>
   <ul>
-    <li><a>Rotate (spins an image a specified number of degrees)</li></a>
-    <li><a>Flip (flips an image across an axis)</li></a>
-    <li><a>Scale (enlarges or shrinks an image)</li></a>
-    <li><a>Crop (removes part of an image)</li></a>
-    <li><a>Frame (places a box/frame around an image)</li></a>
+    <li><a>Rotate: spins an image a specified number of degrees</li></a> <!-- use colon or delete definition -->
+    <li><a>Flip: flips an image across an axis</li></a>
+    <li><a>Scale: enlarges or shrinks an image</li></a>
+    <li><a>Crop: removes part of an image</li></a>
+    <li><a>Frame: places a box/frame around an image</li></a>
   </ul>
   <p>
     In order to try these out, we'll create an image constant called "moon".
@@ -392,11 +419,6 @@
     It's a good practice to define your images as constants, especially if you are using multiple images in a program.
     They can then be combined to create elaborate scenes and pictures.
     Let's do the same thing with a few other images we might want to use:
-    <code class="block">
-      (define sun
-      <img src="images/sun.png">
-      )
-    </code>
     <code class="block">
       (define earth
       <img src="images/earth.png">
@@ -438,9 +460,20 @@
       (image-height moon)
     </code>
     Following the format used for image-height, use the image-width function to obtain the width of the circle in pixels.
+  </p>
+  <a class="fa fa-question-circle" style="font-size:24px"></a>
+  <a class="question">
     How does the result compare to the height of the image?
+  </a>
+  <a class="fa fa-question-circle" style="font-size:24px"></a>
+  <a class="question">
     Is this what you expected?
+  </a>
+  <a class="fa fa-question-circle" style="font-size:24px"></a>
+  <a class="question">
     Why or why not?
+  </a>
+  <p>
     <br>
     <br>
     If a function takes an argument of the image data type, than any code that returns an image will do.
@@ -512,10 +545,10 @@
     </ul>
   <p>
     <code class="block">
-      (crop-top image [number of pixels])
-      (crop-bottom image [number of pixels])
-      (crop-left image [number of pixels])
-      (crop-right image [number of pixels])
+      (crop-top image number-of-pixels)
+      (crop-bottom image number-of-pixels)
+      (crop-left image number-of-pixels)
+      (crop-right image number-of-pixels)
     </code>
     These functions work by cropping the specified section of a given image by the given number of pixels.
     For example:
@@ -588,7 +621,12 @@
     above/align requires a string that specifies a place on the x-axis, such as "right" or "left", while beside/align requires a place on the y-axis like "top" or "bottom".
     You might notice these are the same options available for the crop function.
     <br>
+  </p>
+  <a class="fa fa-question-circle" style="font-size:24px"></a>
+  <a class="question">
     Can you guess why they might need different axis'?
+  </a>
+  <p>
     <br>
     It might become more apparent when you see these functions in action.
     <code class="block">
@@ -596,7 +634,12 @@
     </code>
     <img src="images/above-align.png">
     <br>
+  </p>
+  <a class="fa fa-question-circle" style="font-size:24px"></a>
+  <a class="question">
     Can you see how the x-place affected our result?
+  </a>
+  <p>
     <br>
     Experiment with the beside/align function and see how it differs.
     <br>
@@ -605,7 +648,9 @@
     So far in this section, we have used images we brought in from an external source.
     <br>
     Let's try using the placement functions to build an image from shapes in the htdp/image library.
+    <br>
     Specifically, a star.
+    <br>
     First, we need to create some shapes.
     You can create any shapes you want, in any size and color, but here's what we are going to be working with in our example.
     You may want to stick close to the example this first time through and get more creative later.
@@ -715,9 +760,22 @@
       (place-image image x y scene)
       (place-image/align image x y x-place y-place scene)
     </code>
-    Place-image, from the textbook “Places image onto scene with its center at the coordinates (x,y) and crops the resulting image so that it has the same size as scene.
+    Place-image, like overlay/xy, uses an x and a y coordinate to place an image.
+    The image is placed with the center at the specified coordinates.
+    Unlike overlay/xy, however, place-image crops the image so that fits within the background or scene.
     <br>
-    The coordinates are relative to the top-left of scene."
+    We will use place image to create our final image:
+    <code class="block">
+      (place-image saturn 450 125
+        (overlay/xy (scale 0.5 venus) -50 -200
+          (underlay/align "middle" "bottom"
+                  (overlay/offset purple-star -200 -125 sky)
+                  blue-star
+           )
+          )
+        )
+      </code>
+    Once everything is put together we have a full picture.
   </p>
 
 <div class="footer">
