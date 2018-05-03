@@ -114,8 +114,13 @@ p {
 }
 
 .try-it {
+  border-style: solid;
+  border-width: thin;
+  border-color: darkgray;
+  box-shadow: 3px 3px darkgray;
   text-decoration: none;
   font-family: monospace;
+  font-size: 18px;
   background-color: #f1f1f1;
   margin-right: 80%;
   padding: 2px;

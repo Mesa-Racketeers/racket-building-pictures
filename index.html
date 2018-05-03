@@ -66,7 +66,7 @@
        Try for yourself by clicking this button:
        <br>
        <br>
-        <a class="try-it" href="src/circle.rkt" download>try it</a>
+        <a class="try-it" href="src/circle.rkt" download>TRY IT</a>
        <br>
        <br>
        Was this your result?
@@ -88,7 +88,7 @@
        What if instead we wanted to draw an elongated circle, or an ellipse?
        The ellipse function is very similar to that of a circle, except that now we need to specify a width and a height.
        <code class="block">
-         (ellipse width height mode color) <!-- add arrow -->
+         (ellipse width height mode color) -> image
        </code>
        Let's try creating an ellipse:
        <code class="block">
@@ -153,7 +153,7 @@
           <code class="block">
             (square 150 "outline" "blue")
           </code>
-          <a class="try-it" href="src/square-outline.rkt" download>try it</a>
+          <a class="try-it" href="src/square-outline.rkt" download>TRY IT</a>
           <img src="images/blue-square-outline.png" />
           <br>
           <br>
@@ -203,7 +203,7 @@
           Equilateral triangles have three sides of equal length, and whose three angles, by extension, are also equal.
           Consequently, to draw an equilateral triangle, you simply specify the desired side length, followed by the usual mode and color parameters.
           <code class="block">
-            (triangle side-length mode color)
+            (triangle side-length mode color) -> image
           </code>
           <i>Examples:</i>
           <code class="block">
@@ -776,6 +776,9 @@
         )
       </code>
     Once everything is put together we have a full picture.
+    <br>
+    <img src="images/place-image.png" width="90%">
+    <br>
   </p>
 
 <div class="footer">
