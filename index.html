@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Try It<!DOCTYPE html>
 
 <html>
 
@@ -45,6 +45,11 @@
       The functions available in these libraries can be placed into a few broad categories for easier understanding and use.
     </p>
 
+    <p>
+    To download and install DrRacket on your computer, please visit this
+    <a href="https://www.racket-lang.org/download/">link</a>
+    .
+    </p>
 
 <!-- SECTION 1 -->
 
@@ -75,12 +80,28 @@
          <img src="images/red-circle.png"/>
        <br>
        <br>
-       As expected, the resulting image is that of a solid red circle of radius 25 pixels.
+       As expected, the resulting image is that of a solid red circle.
        If we switch the mode to "outline," we get the following:
        <code class="block">
          (circle 80 "outline" "red")
        </code>
-       Try changing the radius and observe the effect on the circle's size.
+       Two functions that will come in handy when dealing with graphics are
+       image-height and image-width. Their signatures are as follows:
+       <code class="block">
+         (image-height img) -> number (height in pixels)
+       </code>
+       <code class="block">
+         (image-width img) -> number (width in pixels)
+       </code>
+       Try using either of these functions, and entering a copy of our circle image
+       as an argument.
+       <br>
+       <br>
+       Can you tell whether the size we used to construct the circle is its
+       diameter or radius?
+       <br>
+       <br>
+       Try changing the size and observe the effect on the circle.
        Experiment with different colors as well.
        <br>
        <br>
@@ -100,16 +121,16 @@
        <br>
        <img src="images/pink-oval.png" />
        <br>
-       <a class="try-it" style="text-align:center;" href="src/ellipse.rkt" download>try it</a>
+       <a class="try-it" style="text-align:center;" href="src/ellipse.rkt" download>Try It</a>
        <br>
        <a class="fa fa-question-circle" style="font-size:24px"></a>
        <a class="question">
-         Can you tell which argument corresponds to the width?
+         Can you tell which argument corresponds to the width? Use image-width to verify.
        </a>
        <br>
        <a class="fa fa-question-circle" style="font-size:24px"></a>
        <a class="question">
-         Which argument corresponds to the height?
+         Which argument corresponds to the height? Use image-height to verify.
        </a>
        <br>
        <a class="fa fa-question-circle" style="font-size:24px"></a>
@@ -122,7 +143,7 @@
     <h2 id="Polygons">Polygons</h2>
 
       <p>
-        Polygons are shapes with straight sides and angles.
+        Polygons are shapes consisting of any number (>= 3) of straight sides.
         Creating them in Dr. Racket involves a process that is similar to how we made our previous rounded shapes.
         Let's look at some of them in more detail.
       </p>
@@ -142,7 +163,7 @@
           <code class="block">
             (square 150 "solid" "blue")
           </code>
-          <a class="try-it" href="src/square.rkt" download>try it</a>
+          <a class="try-it" href="src/square.rkt" download>Try It</a>
           And here's what is created:
           <br>
           <br>
@@ -182,7 +203,7 @@
           <code class="block">
             (rectangle 225 125 "solid" "green")
           </code>
-          <a class="try-it" href="src/rectangle.rkt" download>try it</a>
+          <a class="try-it" href="src/rectangle.rkt" download>Try It</a>
           <img src="images/green-rectangle.png"/>
           <br>
           <br>
@@ -209,19 +230,19 @@
           <code class="block">
             (triangle 150 "solid" "yellow")
           </code>
-          <a class="try-it" href="src/triangle.rkt" download>try it</a>
+          <a class="try-it" href="src/triangle.rkt" download>Try It</a>
           <img src="images/yellow-triangle.png"/>
           <br>
           <br>
           A right triangle contains a 90 degree angle.
-          To construct a right triangle, you need to provide the two side-lengths of the sides adjacent to the right angle.
+          To construct a right triangle, you provide the two side-lengths of the sides adjacent to the right angle.
           <code class="block">
-            (right-triangle side-length1 side-length2 mode color)
+            (right-triangle side-length1 side-length2 mode color) -> image
           </code>
           <code class="block">
             (right-triangle 200 100 "solid" "orange")
           </code>
-          <a class="try-it" href="src/right-triangle.rkt" download>try it</a>
+          <a class="try-it" href="src/right-triangle.rkt" download>Try It</a>
           <img src="images/orange-right-triangle.png"/>
           <br>
         </p>
@@ -233,7 +254,7 @@
           There are several functions that produce star designs.
           A traditional five-pointed star can be created with the star function.
           <code class="block">
-            (star side-length mode color)
+            (star side-length mode color) -> image
           </code>
           Here is an example:
           <code class="block">
@@ -244,7 +265,7 @@
           <br>
           The radial-star function is a bit more complicated, but produces a design of greater intricacy.
           <code class="block">
-            (radial-star point-count inner-radius outer-radius mode color)
+            (radial-star point-count inner-radius outer-radius mode color) -> image
           </code>
           The point-count is a numerical value that determines how many points you'd like your star to have.
           The inner-radius creates the radius of the body of the star, where the wide end of the points connect.
@@ -255,11 +276,11 @@
           </code>
           <img src="images/radial-star.png"/>
           <br>
-          There is one more type of star we can construct, and that is the star-polygon.
+          There is one more type of star we can construct, and that is the star made out of polygons.
           The star-polygon is almost exactly the same as a regular polygon, except that it takes one more argument, the step-count.
           Instead of each vertex connecting to the one next to it, it instead connects to the vertex that is step-count vertices away, creating a star-like design.
           <code class="block">
-            (star-polygon side-length side-count step-count mode color)
+            (star-polygon side-length side-count step-count mode color) -> image
           </code>
           Here's an example:
           <code class="block">
@@ -276,7 +297,7 @@
           With this function, you can construct regular polygons with any number of sides, and of any side length.
           This is how we construct pentagons, hexagons, octagons or any other many-sided shape.
           <code class="block">
-            (regular-polygon side-length side-count mode color)
+            (regular-polygon side-length side-count mode color) -> image
           </code>
           <code class="block">
             (regular-polygon 20 8 "solid" "palegreen")
@@ -288,9 +309,11 @@
 
   <h2 id="Text">Text</h2>
     <p>
-      If you want to add words to your images, text can be created with the <i><b>text</b></i> function, which requires a string, a font size, and a color.
+      If you want to add words to your images, text can be created with the
+      <i><b>text</b></i> function, which requires a string of characters, a font
+       size, and a color.
       <code class="block">
-        (text string font-size color)
+        (text string font-size color) -> image
       </code>
       <code class="block">
         (text "Earth" 50 "lightskyblue")
@@ -300,10 +323,10 @@
       More detailed and stylized text formatting can be accomplished by using the <i><b>text/font</i></b> function.
       It takes a variety of parameters that allow you to control individual aspects of how your text looks.
       <code class="block">
-        (text/font string font-size color face family style weight underline?)
+        (text/font string font-size color face family style weight underline?) -> image
       </code>
       <code class="block">
-        (text/font "Mars" 50 "hotpink" #f 'system 'normal 'bold #t)
+        (text/font "Mars" 50 "hotpink" false 'system 'normal 'bold #t)
       </code>
       <img src="images/mars-text.png"/>
       <code class="block">
@@ -318,6 +341,10 @@
     <p>
       So far, the colors we have been using are in the form of strings such as "blue", "red", or "turquoise."
       The Dr. Racket color database displays a list of predefined colors you can use when creating graphics.
+      You can find that database
+      <a href="https://docs.racket-lang.org/draw/color-database___.html">here</a>
+      .
+      <br>
       <br>
       But what if you want to use a color that hasn't been predefined?
       The 2htdp/image library has a function that allows us to create almost any color imaginable.
@@ -325,13 +352,13 @@
       <br>
       On your screen, all colors are comprised of varying levels of red, green, and blue.
       Dr. Racket, like most computer graphics systems, uses colors created from these three channels.
-      The value of each color is a whole number that ranges from 0 to 255.
+      The value of each level of color is a whole number that ranges from 0 to 255.
       To produce black, you would set each channel (red, green, and blue) to 0.
       To produce white, you would set all channels to 255.
       Every other possible color is a mix of the three primary colors.
       Using the function <i>make-color</i>, we can create a color by specifying these RGB channels.
       <code class="block">
-        (make-color red green blue)
+        (make-color red green blue) -> color
       </code>
       Let's see an example:
       <code class="block">
@@ -341,7 +368,10 @@
       <br>
       <img src="images/turquoise-circle.png"/>
       <br>
-      Is the color you expected? Why or why not?
+      <a class="fa fa-question-circle" style="font-size:24px"></a>
+      <a class="question">
+      Is this the color you expected? Why or why not?
+      </a>
       <br>
       <br>
       There is a fourth possible input parameter for the function <i>make-color</i>: alpha.
@@ -349,7 +379,7 @@
       An alpha value of 255 gives you a fully opaque (non-transparent) color.
       The closer you get to 0, the more transparent your color becomes.
       <code class="block">
-        (make-color red green blue alpha)
+        (make-color red green blue alpha) -> color
       </code>
       If we take our previous circle and add an alpha of 50, what do we get?
       <code class="block">
