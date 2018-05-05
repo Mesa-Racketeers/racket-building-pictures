@@ -417,6 +417,10 @@ TRY IT<!DOCTYPE html>
       as the Blue channel. The fourth number is for alpha, an at 255, our color is
       fully opaque.
     </p>
+    <a class="fa fa-question-circle" style="font-size:24px"></a>
+    <a class="question">
+      Which values for the RGB channels make up the color "Sienna?"
+    </a>
 
 
 <!-- SECTION 5 -->
@@ -499,10 +503,12 @@ TRY IT<!DOCTYPE html>
   <a class="question">
     How does the result compare to the height of the image?
   </a>
+  <br>
   <a class="fa fa-question-circle" style="font-size:24px"></a>
   <a class="question">
     Is this what you expected?
   </a>
+  <br>
   <a class="fa fa-question-circle" style="font-size:24px"></a>
   <a class="question">
     Why or why not?
@@ -510,35 +516,35 @@ TRY IT<!DOCTYPE html>
   <p>
     <br>
     <br>
-    If a function takes an argument of the image data type, than any code that returns an image will do.
+    If a function takes an argument of the image data type, then any code that returns an image will do.
     <code class="block">
       (image-height (circle 15 "red" "solid"))
     </code>
-    This code above first creates the circle image, and then feeds it directly into the image-height function.
+    This code above first creates the circle image, and then feeds it directly into the <code>image-height</code> function.
     You never see the image, but you obtain the information relevant to the function used.
     This will come in handy shortly when we want to edit and combine images.
     <br>
     <br>
-    The first editing tool we will explore is the rotate function.
-    Rotate has two parameters:
+    The first editing tool we will explore is the <code>rotate</code> function.
+    <code>Rotate</code> has two parameters:
     <code class="block">
-      (rotate angle image)
+      (rotate angle image) &rarr; image
     </code>
     This function rotates an image in the counterclockwise direction by the number of degrees specified.
-    Let's try it on the moon:
+    Let's try it on Saturn:
     <code class="block">
       (rotate 90 saturn)
     </code>
     <img src="images/saturn-rot.png">
-    You can also rotate images in the clockwise direction using a variation of rotate, the rotate-cw function.
+    You can also rotate images in the clockwise direction using a variation of rotate, the <code>rotate-cw</code> function.
     <code class="block">
       (rotate-cw 60 saturn)
     </code>
     <img src="images/saturn-cw.png">
     We also have the option to scale an image to make it larger or smaller.
-    The scale function has two parametes:
+    The <code>scale</code> function has two parameters:
     <code class="block">
-      (scale factor image)
+      (scale factor image) &rarr; image
     </code>
     The scale factor is the amount by which an image is either increased or decreased.
     A number between 0 and 1 will result in an image smaller than the original, and a number larger than 1 will result in an image larger than the original.
@@ -553,10 +559,12 @@ TRY IT<!DOCTYPE html>
       (scale 2 neptune)
     </code>
     <img src="images/neptune-2.png">
-    There are two versions of the flip function.
-    Flip-horizontal flips an image across the horizontal axis for a mirror image of your original image.
+    There are two versions of the <code>flip</code> function.
+    <code>Flip-horizontal</code> flips an image across the horizontal axis for a mirror image of your original image.
     Flip-vertical flips the image across the vertical axis.
-    <br>
+    <code class="block">
+      (flip-horizontal image) &rarr; image
+    </code>
     <br>
     Each of these functions take only the image you want to manipulate.
     <code class="block">
@@ -573,16 +581,16 @@ TRY IT<!DOCTYPE html>
     They include:
   </p>
     <ul>
-      <li><a>Directional (-bottom, -top, etc.)</li></a>
-      <li><a>/align</li></a>
-      <li><a>/xy</li></a>
+      <li><a>Directional (<code>-bottom, -top</code>, etc.)</li></a>
+      <li><a><code>/align</code></li></a>
+      <li><a><code>/xy</code></li></a>
     </ul>
   <p>
     <code class="block">
-      (crop-top image number-of-pixels)
-      (crop-bottom image number-of-pixels)
-      (crop-left image number-of-pixels)
-      (crop-right image number-of-pixels)
+      (crop-top image number-of-pixels) &rarr; image
+      (crop-bottom image number-of-pixels) &rarr; image
+      (crop-left image number-of-pixels) &rarr; image
+      (crop-right image number-of-pixels) &rarr; image
     </code>
     These functions work by cropping the specified section of a given image by the given number of pixels.
     For example:
@@ -602,20 +610,20 @@ TRY IT<!DOCTYPE html>
     Major types include:
   </p>
   <ul>
-    <li><a>above</li></a>
-    <li><a>beside</li></a>
-    <li><a>overlay</li></a>
-    <li><a>underlay</li></a>
-    <li><a>place-image</li></a>
+    <li><a><code>above</code></li></a>
+    <li><a><code>beside</code></li></a>
+    <li><a><code>overlay</code></li></a>
+    <li><a><code>underlay</code></li></a>
+    <li><a><code>place-image</code></li></a>
   </ul>
   <p>
     Similar to the editing functions, there are variations for most of the functions in this category.
     Like the editing functions, the placement functions have variations that allow greater specificity and level of control over where the image appears.
     </p>
     <ul>
-      <li><a>/align uses an xy to determine at what point the images are aligned.</li></a>
-      <li><a>/offset moves the image a certain amount on the x and y axis’.</li></a>
-      <li><a>/xy is similar but the images begin aligned at the top right (not the center).</li></a>
+      <li><a><code>/align</code> uses an xy to determine at what point the images are aligned.</li></a>
+      <li><a><code>/offset</code> moves the image a certain amount on the x and y axes.</li></a>
+      <li><a><code>/xy</code> is similar but the images begin aligned at the top right (not the center).</li></a>
     </ul>
   <p>
     In this section, we are going to utilize our knowledge from what we've done previously in combination with new placement functions to build an image.
@@ -624,7 +632,7 @@ TRY IT<!DOCTYPE html>
     <br>
     The function above takes a series of images, and places the first above the other in sequence.
     <code class="block">
-      (above image1 image2 ...)
+      (above image1 image2 ...) &rarr; image
     </code>
     <code class="block">
       (above earth moon)
@@ -634,9 +642,9 @@ TRY IT<!DOCTYPE html>
     <br>
     <img src="images/above-img.png">
     <br>
-    To order our images horizontally, we can use the beside function.
+    To order our images horizontally, we can use the <code>beside</code> function.
     <code class="block">
-      (beside image1 image2 ...)
+      (beside image1 image2 ...) &rarr; image
     </code>
     This function returns your images ordered left to right.
     <code class="block">
@@ -644,12 +652,12 @@ TRY IT<!DOCTYPE html>
     </code>
     <img src="images/beside-img.png">
     <br>
-    The above and beside functions have a variation we can call /align.
+    The above and beside functions have a variation we can call <code>/align</code>.
     <code class="block">
-      (above/align x-place image1 image2 ...)
+      (above/align x-place image1 image2 ...) &rarr; image
     </code>
     <code class="block">
-      (beside/align y-place image1 image2 ...)
+      (beside/align y-place image1 image2 ...) &rarr; image
     </code>
     Take a look at the first parameter for each of these functions.
     above/align requires a string that specifies a place on the x-axis, such as "right" or "left", while beside/align requires a place on the y-axis like "top" or "bottom".
