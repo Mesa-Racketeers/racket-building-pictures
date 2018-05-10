@@ -666,7 +666,7 @@ TRY IT<!DOCTYPE html>
   </p>
   <a class="fa fa-question-circle" style="font-size:24px"></a>
   <a class="question">
-    Can you guess why they might need different axis'?
+    Can you guess why they might need different axes?
   </a>
   <p>
     <br>
@@ -679,11 +679,11 @@ TRY IT<!DOCTYPE html>
   </p>
   <a class="fa fa-question-circle" style="font-size:24px"></a>
   <a class="question">
-    Can you see how the x-place affected our result?
+    Can you see how the changing the x-place argument affected our result?
   </a>
   <p>
     <br>
-    Experiment with the beside/align function and see how it differs.
+    Experiment with the <code>beside/align</code> function and see how it differs.
     <br>
     What happens when you use images of very similar dimensions?
     <br>
@@ -705,33 +705,38 @@ TRY IT<!DOCTYPE html>
       <br>
       (circle 25 100 "mediumslateblue")
     </code>
-    Can you picture what these shapes will look like based on the arguments that have been used?
+    <a class="fa fa-question-circle" style="font-size:24px"></a>
+    <a class="question">
+      Can you picture what these shapes will look like based on the arguments that have been used?
+    </a>
+    <br>
+    <br>
     <br>
     What we want to do is place these images on top of each other.
-    The overlay function allows us to do exactly that.
+    The <code>overlay</code> function allows us to do exactly that.
     <code class="block">
-      (overlay image1 image2 ...)
+      (overlay image1 image2 ...) &rarr; image
     </code>
-    With overlay, objects appear directly on top of one another, with the first listed being the top-most visible one, through to the last on the bottom.
+    With <code>overlay</code>, objects appear directly on top of one another, with the first listed being the top-most visible one, through to the last on the bottom.
     <br>
     Let's try it out. Don't forget to name your image so that its easier to use later.
     <code class="block">
       (define purple-star
         (overlay
-        (radial-star 8 40 10 "solid" "mediumslateblue")
-        (rotate 18 (radial-star 15 50 30 60 "mediumslateblue"))
-        (circle 30 80 "mediumslateblue")
-        (circle 25 100 "mediumslateblue")
+          (radial-star 8 40 10 "solid" "mediumslateblue")
+          (rotate 18 (radial-star 15 50 30 60 "mediumslateblue"))
+          (circle 30 80 "mediumslateblue")
+          (circle 25 100 "mediumslateblue")
         )
       )
     </code>
     What does the result look like?
     <img src="images/purple-star.png">
     <br>
-    Now, overlay is not the only way to stack shapes and images.
-    Underlay is another option.
+    Now, <code>overlay</code> is not the only way to stack shapes and images.
+    <code>Underlay</code> is another option.
     <code class="block">
-      (underlay image1 image2 ...)
+      (underlay image1 image2 ...) &rarr; image
     </code>
     In addition to having a similar template, this function operates very similarly, but in reverse order, with the first image listed appearing underneath all others.
     <br>
@@ -744,13 +749,13 @@ TRY IT<!DOCTYPE html>
           (circle 15 100 "lavender")
           (circle 8 "solid" "skyblue")
           (radial-star 10 10 5 "solid" "linen")
-          )
+        )
       )
     </code>
     Here is what it looks like:
     <img src="images/blue-star.png">
     <br>
-    Do you see how the order of layers is reversed, as opposed to overlay?
+    Do you see how the order of layers is reversed, as opposed to <code>overlay</code>?
     <br>
     Now we have two stars.
     <br>
@@ -760,7 +765,7 @@ TRY IT<!DOCTYPE html>
     <br>
     The empty-scene function creates an outlined rectangle, a 'scene' on which to place things.
     <code class="block">
-      (empty-scene width height color)
+      (empty-scene width height color) &rarr; color
     </code>
     If you don't include a color, the scene will default to white.
     <br>
@@ -775,38 +780,42 @@ TRY IT<!DOCTYPE html>
     <br>
     To do this, we can use overlay, underlay, or one of their many variations:
     <code class="block">
-      (overlay/align x-place y-place image1 image2 ...)
-      (overlay/offset image1 x y image2)
-      (overlay/align/offset x-place y-place image1 x y image2)
-      (overlay/xy image1 x y image2)
+      (overlay/align x-place y-place image1 image2 ...)  &rarr; image
+      (overlay/offset image1 x y image2)  &rarr; image
+      (overlay/align/offset x-place y-place image1 x y image2)  &rarr; image
+      (overlay/xy image1 x y image2)  &rarr; image
       <br>
-      (underlay/align x-place y-place image1 image2 ...)
-      (underlay/offset image1 x y image2)
-      (underlay/align/offset x-place y-place image1 x y image2)
-      (underlay/xy image1 x y image2)
+      (underlay/align x-place y-place image1 image2 ...)  &rarr; image
+      (underlay/offset image1 x y image2)  &rarr; image
+      (underlay/align/offset x-place y-place image1 x y image2)  &rarr; image
+      (underlay/xy image1 x y image2)  &rarr; image
     </code>
-    As you can see, much like above and beside, overlay/align and underlay/align use and x-place and y-place to specify where to place an image in relation to another one.
-    However, these functions require both an x and y place.
-    Why might this be?
+    As you can see, much like <code>above</code> and <code>beside</code>, <code>overlay/align</code> and <code>underlay/align</code> use an <code>x-place</code> and <code>y-place</code> to specify where to place an image in relation to another one.
+    However, these functions require both an <code>x-place</code> and <code>y-place</code> argument.
     <br>
-    Overlay and underlay also have some variations we haven't encountered before.
-    The /offset variation actually works similarly to that of /align, but instead of using a place on a particular axis, the function takes a numerical value.
+    <a class="fa fa-question-circle" style="font-size:24px"></a>
+    <a class="question">
+      Why might this be?
+    </a>
     <br>
-    Given this fact, what do you think /align/offset might do?
+    <code>Overlay</code> and <code>underlay</code> also have some variations we haven't encountered before.
+    The <code>/offset</code> variation actually works similarly to that of <code>/align</code>, but instead of using a place on a particular axis, the function takes a numerical value.
     <br>
-    The /xy variation may look similar to the previous functions, but it does something quite different.
+    Given this fact, what do you think <code>/align/offset</code> might do?
+    <br>
+    The <code>/xy</code> variation may look similar to the previous functions, but it does something quite different.
     Instead of determining the amount by which the image is offset or aligned on a particular axis, the x and y positions exactly place the image at those coordinates.
     <br>
-    Now, there is one more major placement function we haven't covered: place-image.
+    Now, there is one more major placement function we haven't covered: <code>place-image</code>.
     <code class="block">
-      (place-image image x y scene)
-      (place-image/align image x y x-place y-place scene)
+      (place-image image x y scene) &rarr; image
+      (place-image/align image x y x-place y-place scene) &rarr; image
     </code>
-    Place-image, like overlay/xy, uses an x and a y coordinate to place an image.
+    <code>Place-image</code>, like <code>overlay/xy</code>, uses an x and a y coordinate to place an image.
     The image is placed with the center at the specified coordinates.
-    Unlike overlay/xy, however, place-image crops the image so that fits within the background or scene.
+    Unlike <code>overlay/xy</code>, however, <code>place-image</code> crops the image so that fits within the background or scene.
     <br>
-    We will use place image to create our final image:
+    We will use <code>place-image</code> to create our final image:
     <code class="block">
       (place-image saturn 450 125
         (overlay/xy (scale 0.5 venus) -50 -200
@@ -822,6 +831,20 @@ TRY IT<!DOCTYPE html>
     <img src="images/place-image.png" width="90%">
     <br>
   </p>
+
+<i><h3 id="Additional Challenges">Additional Challenges</h3></i>
+<p>
+1) Using what we've learned in this chapter, design a smiley. Try various facial
+expressions. For an added challenge, try to make the smiley's color match your
+skin color by playing with the RGB values.
+<br>
+<br>
+2) Use the tools from this chapter to create an image of the United States flag.
+Try to be as accurate as possible. After that, try to replicate some other world
+flags. (For really intricate shapes, do your best to approximate them using triangles.)
+
+</p>
+
 
 <div class="footer">
   <h4>Copywright Notice</h6>
