@@ -12,7 +12,22 @@ img {
     margin-right: auto;
 }
 
+.question::before {
+  content: "?";
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 14pt;
+  font-weight: bolder;
+  margin: 0px 5px 0px 5px;
+  border-radius: 100%;
+  border-style: solid;
+  border-color: black;
+  background-color: black;
+  color: white;
+}
+
 .question {
+  margin: 10px 10px 10px 10px;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 16;
@@ -118,13 +133,15 @@ p {
 }
 
 .try-it {
+  border-radius: 2px;
   border-style: solid;
   border-width: thin;
   border-color: darkgray;
   box-shadow: 3px 3px darkgray;
   text-decoration: none;
   font-family: monospace;
-  font-size: 18px;
+  font-size: 14px;
+  font-weight: bolder;
   background-color: #f1f1f1;
   margin-right: 80%;
   padding: 2px;
