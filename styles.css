@@ -15,7 +15,7 @@ img {
 .question {
   font-family: sans-serif;
   font-weight: bold;
-  font-size: 18;
+  font-size: 16;
 }
 
 .header {
@@ -31,6 +31,10 @@ h2 {
 }
 
 h3 {
+    font-family: sans-serif;
+}
+
+h4 {
     font-family: sans-serif;
 }
 

@@ -1,4 +1,4 @@
-Try It<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 
@@ -54,12 +54,12 @@ Try It<!DOCTYPE html>
 
 <p>
   Let's start with a basic circle, one of the easiest shapes to create.
-  A circle only requires three parameters: size, mode, and color. <!-- make parameters code -->
+  A circle only requires three parameters: <code>size</code>, <code>mode</code>, and <code>color</code>.
   We will see these parameters and this format repeated in the construction of other shapes, but what differentiates a circle is that the size is defined by the radius.
   The radius is given as a number, denoting how many pixels used, which is typical for how size is defined in Racket.
-  The mode and color parameters don't change much between shapes, with <i>mode</i> describing whether the circle should be solid or an outline, and <i>color</i>, which we will discuss more in depth a little later.
+  The mode and color parameters don't change much between shapes, with <code>mode</code> describing whether the circle should be solid or an outline, and <code>color</code>, which we will discuss more in depth a little later.
   <code class="block">
-    (circle size mode color) -> image
+    (circle size mode color) -> Image
   </code>
   What circle will be created with the following?
   <code class="block">
@@ -78,23 +78,10 @@ Try It<!DOCTYPE html>
 </p>
 <p>
   As expected, the resulting image is that of a solid red circle.
-  If we switch the mode to "outline," we get the following:
+  If we switch the <code>mode</code> to "outline," we get the following:
   <code class="block">
     (circle 80 "outline" "red")
   </code>
-  Two functions that will come in handy when dealing with graphics are image-height and image-width.
-  Their signatures are as follows:
-  <code class="block">
-    (image-height img) -> number (height in pixels)
-  </code>
-  <code class="block">
-         (image-width img) -> number (width in pixels)
-  </code>
-  Try using either of these functions, and entering a copy of our circle image as an argument.
-</p>
-<p>
-  Can you tell whether the size we used to construct the circle is its diameter or radius?
-</p>
 <p>
   Try changing the size and observe the effect on the circle.
   Experiment with different colors as well.
@@ -102,9 +89,9 @@ Try It<!DOCTYPE html>
 <p>
   Circles are easy to create because their radius is the same in all directions.
   What if instead we wanted to draw an elongated circle, or an ellipse?
-  The ellipse function is very similar to that of a circle, except that we need to specify a width and a height.
+  The <code>ellipse</code> function is very similar to that of a circle, except that we need to specify a width and a height.
   <code class="block">
-    (ellipse width height mode color) -> image
+    (ellipse width height mode color) -> Image
   </code>
   Let's try creating an ellipse:
   <code class="block">
@@ -150,11 +137,11 @@ Try It<!DOCTYPE html>
 <i><h3 id="squares">Squares</h3></i>
 
 <p>
-  Like a circle, the square function requires a size.
+  Like a circle, the <code>square</code> function requires a size.
   In this case, the given numerical value specifies the length of a side.
-  This is followed by the mode and color, as before.
+  This is followed by the <code>mode</code> and <code>color</code>, as before.
   <code class="block">
-    (square side-length mode color) -> image
+    (square side-length mode color) -> Image
   </code>
   Here's an example:
   <code class="block">
@@ -195,7 +182,7 @@ Try It<!DOCTYPE html>
   By now the general outline for the functions used to define shapes should be becoming familiar.
   Can you guess what parameters might be needed to create a rectangle?
   <code class="block">
-    (rectangle width height mode color) -> image
+    (rectangle width height mode color) -> Image
   </code>
   <code class="block">
     (rectangle 225 125 "solid" "green")
@@ -206,7 +193,7 @@ Try It<!DOCTYPE html>
   <p>
   <div class="question">
     <div class="fa fa-question-circle" style="font-size:24px"></div>
-  How could you use the rectangle function to design a square identical to the blue square we produced above?
+    How could you use the rectangle function to design a square identical to the blue square we produced above?
   </div>
 </p>
 
@@ -221,9 +208,9 @@ Try It<!DOCTYPE html>
   Equilateral triangles have three sides of equal length, and whose three angles, by extension, are also equal.
   To produce an equilateral triangle, you simply specify the desired side length, followed by the usual mode and color parameters.
   <code class="block">
-    (triangle side-length mode color) -> image
+    (triangle side-length mode color) -> Image
   </code>
-  <i>Examples:</i>
+  For example:
   <code class="block">
     (triangle 150 "solid" "yellow")
   </code>
@@ -234,7 +221,7 @@ Try It<!DOCTYPE html>
   A right triangle contains a 90 degree angle.
   To construct a right triangle, you provide the two side-lengths of the sides adjacent to the right angle.
   <code class="block">
-    (right-triangle side-length1 side-length2 mode color) -> image
+    (right-triangle side-length-1 side-length-2 mode color) -> Image
   </code>
   <code class="block">
     (right-triangle 200 100 "solid" "orange")
@@ -249,9 +236,9 @@ Try It<!DOCTYPE html>
 
 <p>
   There are several functions that produce star designs.
-  A traditional five-pointed star can be created with the star function.
+  A traditional five-pointed star can be created with the <code>star</code> function.
   <code class="block">
-    (star side-length mode color) -> image
+    (star side-length mode color) -> Image
   </code>
   Here is an example:
   <code class="block">
@@ -260,14 +247,14 @@ Try It<!DOCTYPE html>
   <img src="images/violet-star.png"/>
 </p>
 <p>
-  The radial-star function is a bit more complicated, but produces a design of greater intricacy.
+  The <code>radial-star</code> function is a bit more complicated, but produces a design of greater intricacy.
   <code class="block">
     (radial-star point-count inner-radius outer-radius mode color) -> image
   </code>
-  The point-count is a numerical value that determines how many points you'd like your star to have.
-  The inner-radius creates the radius of the body of the star, where the wide end of the points connect.
-  The outer-radius produces the distance that each outer point of the star reaches.
-  The mode and color arguments are the same as for all the shapes above.
+  The <code>point-count</code> is a numerical value that determines how many points you'd like your star to have.
+  The <code>inner-radius</code> creates the radius of the body of the star, where the wide end of the points connect.
+  The <code>outer-radius</code> produces the distance that each outer point of the star reaches.
+  The <code>mode</code> and <code>color</code> arguments are the same as for all the shapes above.
   <code class="block">
     (radial-star 15 50 25 "solid" "violet")
   </code>
@@ -275,10 +262,10 @@ Try It<!DOCTYPE html>
 </p>
 <p>
   There is one more type of star we can construct, and that is the star made out of polygons.
-  The star-polygon is almost exactly the same as a regular polygon, except that it takes one more argument, the step-count.
-  Instead of each vertex connecting to the one next to it, it instead connects to the vertex that is step-count vertices away, creating a star-like design.
+  The <code>star-polygon</code> is almost exactly the same as a regular polygon, except that it takes one more argument, the <code>step-count</code>.
+  Instead of each vertex connecting to the one next to it, it instead connects to the vertex that is <code>step-count</code> vertices away, creating a star-like design.
   <code class="block">
-    (star-polygon side-length side-count step-count mode color) -> image
+    (star-polygon side-length side-count step-count mode color) -> Image
   </code>
   Here's an example:
   <code class="block">
@@ -292,11 +279,11 @@ Try It<!DOCTYPE html>
 <i><h3 id = "otherpolygons">Other Polygons</h3></i>
 
 <p>
-  If you want to construct shapes with more than three or four sides, you can use the regular-polygon function.
+  If you want to construct shapes with more than three or four sides, you can use the <code>regular-polygon</code> function.
   With this function, you can construct regular polygons with any number of sides, and of any side length.
   This is how we construct pentagons, hexagons, octagons or any other many-sided shape.
   <code class="block">
-    (regular-polygon side-length side-count mode color) -> image
+    (regular-polygon side-length side-count mode color) -> Image
   </code>
   <code class="block">
     (regular-polygon 20 8 "solid" "palegreen")
@@ -311,7 +298,7 @@ Try It<!DOCTYPE html>
 <p>
   If you want to add words to your images, text can be created with the <code>text</code> function, which requires a string of characters, a font size, and a color.
   <code class="block">
-    (text string font-size color) -> image
+    (text string font-size color) -> Image
   </code>
   <code class="block">
     (text "Earth" 50 "lightskyblue")
@@ -319,10 +306,10 @@ Try It<!DOCTYPE html>
   <img src="images/earth-text.png"/>
 </p>
 <p>
-  More detailed and stylized text formatting can be accomplished by using the <i><b>text/font</i></b> function.
+  More detailed and stylized text formatting can be accomplished by using the <code>text/font</code> function.
   It takes a variety of parameters that allow you to control individual aspects of how your text looks.
   <code class="block">
-    (text/font string font-size color face family style weight underline?) -> image
+    (text/font string font-size color face family style weight underline?) -> Image
   </code>
   <code class="block">
     (text/font "Mars" 50 "hotpink" false 'system 'normal 'bold #t)
@@ -349,14 +336,14 @@ Try It<!DOCTYPE html>
 </p>
 <p>
   On your screen, all colors are comprised of varying levels of red, green, and blue.
-  Dr. Racket, like most computer graphics systems, uses colors created from these three channels.
+  Racket, like most computer graphics systems, uses colors created from these three channels.
   The value of each level of color is a whole number that ranges from 0 to 255.
   To produce black, you would set each channel (red, green, and blue) to 0.
   To produce white, you would set all channels to 255.
   Every other possible color is a mix of the three primary colors.
   Using the function <code>make-color</code>, we can create a color by specifying these RGB channels.
   <code class="block">
-    (make-color red green blue) -> color
+    (make-color red green blue) -> Color
   </code>
   Let's see an example:
   <code class="block">
@@ -372,12 +359,12 @@ Try It<!DOCTYPE html>
   </div>
 </p>
 <p>
-  There is a fourth possible input parameter for the function <code>make-color</code>: alpha.
-  The alpha determines the opacity (or transparency) of the color.
-  An alpha value of 255 gives you a fully opaque (non-transparent) color.
+  There is a fourth possible input parameter for the function <code>make-color</code>: <code>alpha</code>.
+  The <code>alpha</code> determines the opacity (or transparency) of the color.
+  An <code>alpha</code> value of 255 gives you a fully opaque (non-transparent) color.
   The closer you get to 0, the more transparent your color becomes.
   <code class="block">
-    (make-color red green blue alpha) -> color
+    (make-color red green blue alpha) -> Color
   </code>
   If we take our previous circle and add an alpha of 50, what do we get?
   <code class="block">
@@ -399,13 +386,13 @@ Try It<!DOCTYPE html>
   What are the values of red, green, and blue that make up the color "aqua?" Let's find out:
   <code class="block">
     (name->color "aqua")
-    (make-color 0 255 255 255)
   </code>
   As you can see, the output of this function looks familiar.
-  It is in the form of the make-color function.
   <code class="block">
     (make-color 221 160 221 255)
   </code>
+  <code>name->color</code> is unusual among functions we've learned up to this point because it returns a function.
+  In fact, it returns the same function that we would call in order to create the color "aqua".
 </p>
 <p>
   <div class="question">
@@ -413,6 +400,13 @@ Try It<!DOCTYPE html>
     Why might you want your result to be in the form of another function?
   </div>
 </p>
+<p>
+  <div class="question">
+    <div class="fa fa-question-circle" style="font-size:24px"></div>
+    What RGB channel values make up the color 'Sienna'?
+  </div>
+</p>
+
 
 <!-- SECTION 5 -->
 
@@ -435,15 +429,15 @@ Try It<!DOCTYPE html>
 <p>
   Functions in this category include:
   <ul>
-    <li>Rotate: spins an image a specified number of degrees</li><!-- use colon or delete definition -->
-    <li>Flip: flips an image across an axis</li>
-    <li>Scale: enlarges or shrinks an image</li>
-    <li>Crop: removes part of an image</li>
-    <li>Frame: places a box/frame around an image</li>
+    <li><code>rotate</code>: spins an image a specified number of degrees</li>
+    <li><code>flip</code>: flips an image across an axis</li>
+    <li><code>scale</code>: enlarges or shrinks an image</li>
+    <li><code>crop</code>: removes part of an image</li>
+    <li><code>frame</code>: places a box/frame around an image</li>
   </ul>
 </p>
 <p>
-  In order to try these out, we'll create an image constant called "moon".
+  In order to try these out, we'll create an image constant called <code>moon</code>.
   This will make it easier to do different things wth the image without having to copy and paste it each time.
   <code class="block">
     (define moon <img src="images/moon.png" width="100px"> )
@@ -486,12 +480,17 @@ Try It<!DOCTYPE html>
 <p>
   Before we learn more about these editing functions, let's talk about how images can serve as arguments to functions.
   <br>
-  In this case, we will use the constant we created up above with the image-height function.
-  Image-height returns the height of an image in pixels.
+  In this case, we will use the constant we created up above with the <code>image-height</code> function.
+  <code>image-height</code> returns the height of an image in pixels.
   <code class="block">
-    (image-height moon)
+    (image-height image) -> Image
   </code>
-  Following the format used for image-height, use the image-width function to obtain the width of the circle in pixels.
+  Try using this function on one of the images we defined.
+  <br>
+  You can also try the <code>image-width</code> function, which follows a similar format, to obtain the width of an image in pixels.
+  <code class="block">
+    (image-width image) -> Image
+  </code>
 </p>
 <p>
   <div class="question">
@@ -508,37 +507,39 @@ Try It<!DOCTYPE html>
   </div>
 </p>
 <p>
-  If a function takes an argument of the image data type, than any code that returns an image will do.
+  If a function takes an argument of the image datatype, then any code that returns an image should work equally well as an argument.
+  <br>
+  Take a look at this code, for example.
   <code class="block">
     (image-height (circle 15 "red" "solid"))
   </code>
-  This code above first creates the circle image, and then feeds it directly into the image-height function.
+  It first creates image of a circle, and then feeds it directly into the <code>image-height</code> function.
   You never see the image, but you obtain the information relevant to the function used.
   This will come in handy shortly when we want to edit and combine images.
 </p>
 <p>
-  The first editing tool we will explore is the rotate function.
+  The first editing tool we will explore is the <code>rotate</code> function.
   Rotate has two parameters:
   <code class="block">
-      (rotate angle image) -> image
+      (rotate angle image) -> Image
   </code>
   This function rotates an image in the counterclockwise direction by the number of degrees specified.
-  Let's try it on the moon:
+  Let's try it on the <code>moon</code>:
   <code class="block">
     (rotate 90 saturn)
   </code>
   <img src="images/saturn-rot.png">
-  You can also rotate images in the clockwise direction using a variation of rotate, the rotate-cw function.
+  You can also rotate images in the clockwise direction using a variation of <code>rotate</code>, the <code>rotate-cw</code> function.
   <code class="block">
     (rotate-cw 60 saturn)
   </code>
   <img src="images/saturn-cw.png">
   We also have the option to scale an image to make it larger or smaller.
-  The scale function has two parametes:
+  The <code>scale</code> function has two parametes:
   <code class="block">
-    (scale factor image)
+    (scale factor image) -> Image
   </code>
-  The scale factor is the amount by which an image is either increased or decreased.
+  The scale <code>factor</code> is the amount by which an image is either increased or decreased.
   A number between 0 and 1 will result in an image smaller than the original, and a number larger than 1 will result in an image larger than the original.
 </p>
 <p>
@@ -551,9 +552,9 @@ Try It<!DOCTYPE html>
     (scale 2 neptune)
   </code>
   <img src="images/neptune-2.png">
-  There are two versions of the flip function.
-  Flip-horizontal flips an image across the horizontal axis for a mirror image of your original image.
-  Flip-vertical flips the image across the vertical axis.
+  There are two versions of the <code>flip</code> function.
+  <code>flip-horizontal</code> flips an image across the horizontal axis for a mirror image of your original image.
+  <code>flip-vertical</code> flips the image across the vertical axis.
 </p>
 <p>
   Each of these functions take only the image you want to manipulate.
@@ -565,16 +566,16 @@ Try It<!DOCTYPE html>
     (flip-vertical jupiter)
   </code>
   <img src="images/jupiter-vert.png">
-  The last of the major editing functions is the cropping function.
+  The last of the major editing functions is the <code>crop</code> function.
   There are a few variations of this function, which more precisely define how the image should be altered.
   <br>
-  They include:
 </p>
 <p>
+  They include:
   <ul>
-    <li>Directional (-bottom, -top, etc.)</li>
-    <li>/align</li>
-    <li>/xy</li>
+    <li>Directional (<code>-bottom</code>, <code>-top</code>, etc.)</li>
+    <li><code>/align</code></li>
+    <li><code>/xy</code></li>
   </ul>
 </p>
 <p>
@@ -602,24 +603,21 @@ Try It<!DOCTYPE html>
   You can think of these functions as having few major types, then some variations on each type.
 </p>
 <p>
-  Major types include:
+ Major types include:
   <ul>
-    <li><a>above</li></a>
-    <li><a>beside</li></a>
-    <li><a>overlay</li></a>
-    <li><a>underlay</li></a>
-    <li><a>place-image</li></a>
+    <li><code>above</code></li>
+    <li><code>beside</code></li>
+    <li><code>overlay</code></li>
+    <li><code>underlay</code></li>
+    <li><code>place-image</code></li>
   </ul>
-<p>
-<p>
-    Similar to the editing functions, there are variations for most of the functions in this category.
-    Like the editing functions, the placement functions have variations that allow greater specificity and level of control over where the image appears.
 </p>
 <p>
+  Like the editing functions, the placement functions have variations that allow greater specificity and level of control over where the image appears.
     <ul>
-      <li><a>/align uses an xy to determine at what point the images are aligned.</li></a>
-      <li><a>/offset moves the image a certain amount on the x and y axis’.</li></a>
-      <li><a>/xy is similar but the images begin aligned at the top right (not the center).</li></a>
+      <li><code>/align</code> uses x and y coordinates to determine at what point the images are aligned.</li>
+      <li><code>/offset</code> moves the image a certain amount on the x and y axes.</li>
+      <li><code>/xy</code> is similar but the images begin aligned at the top right (not the center).</li>
     </ul>
 </p>
 <p>
@@ -627,9 +625,9 @@ Try It<!DOCTYPE html>
   <br>
   We have a couple options to place multiple images in a scene.
   <br>
-  The function above takes a series of images, and places the first above the other in sequence.
+  The function <code>above</code> takes a series of images, and places the first above the other in sequence.
   <code class="block">
-    (above image1 image2 ...)
+    (above image1 image2 ...) -> Image
   </code>
   <code class="block">
     (above earth moon)
@@ -639,9 +637,9 @@ Try It<!DOCTYPE html>
   <img src="images/above-img.png">
 </p>
 <p>
-  To order our images horizontally, we can use the beside function.
+  To order our images horizontally, we can use the <code>beside</code> function.
   <code class="block">
-    (beside image1 image2 ...)
+    (beside image1 image2 ...) -> Image
   </code>
   This function returns your images ordered left to right.
   <code class="block">
@@ -649,21 +647,21 @@ Try It<!DOCTYPE html>
   </code>
   <img src="images/beside-img.png">
   <br>
-  The above and beside functions have a variation we can call /align.
+  The <code>above</code> and <code>beside</code> functions have a variation we can call <code>/align</code>.
   <code class="block">
-    (above/align x-place image1 image2 ...)
+    (above/align x-place image1 image2 ...) -> Image
   </code>
   <code class="block">
-      (beside/align y-place image1 image2 ...)
+      (beside/align y-place image1 image2 ...) -> Image
   </code>
   Take a look at the first parameter for each of these functions.
-  above/align requires a string that specifies a place on the x-axis, such as "right" or "left", while beside/align requires a place on the y-axis like "top" or "bottom".
-  You might notice these are the same options available for the crop function.
+  <code>above/align</code> requires a string that specifies a place on the x-axis, such as "right" or "left", while <code>beside/align</code> requires a place on the y-axis like "top" or "bottom".
+  You might notice these are the same options available for the <code>crop</code> function.
 </p>
 <p>
   <div class="question">
     <div class="fa fa-question-circle" style="font-size:24px"></div>
-    Can you guess why they might need different axis'?
+    Can you guess why they might need different axes?
   </div>
 </p>
 <p>
@@ -676,14 +674,19 @@ Try It<!DOCTYPE html>
 <p>
   <div class="question">
     <div class="fa fa-question-circle" style="font-size:24px"></div>
-    Can you see how the x-place affected our result?
+    Can you see how changing the x-place argument affected our result?
   </div>
 </p>
 <p>
-  Experiment with the beside/align function and see how it differs.
-  <br>
-  What happens when you use images of very similar dimensions?
-  <br>
+  Experiment with the <code>beside/align</code> function and see how it differs.
+</p>
+<p>
+  <div class="question">
+    <div class="fa fa-question-circle" style="font-size:24px"></div>
+    What happens when you use images of very similar dimensions?
+  </div>
+</p>
+<p>
   So far in this section, we have used images we brought in from an external source.
   <br>
   Let's try using the placement functions to build an image from shapes in the htdp/image library.
@@ -702,14 +705,20 @@ Try It<!DOCTYPE html>
     <br>
     (circle 25 100 "mediumslateblue")
   </code>
-  Can you picture what these shapes will look like based on the arguments that have been used?
-  <br>
+</p>
+<p>
+  <div class="question">
+    <div class="fa fa-question-circle" style="font-size:24px"></div>
+    Can you picture what these shapes will look like based on the arguments that have been used?
+  </div>
+</p>
+<p>
   What we want to do is place these images on top of each other.
-  The overlay function allows us to do exactly that.
+  The <code>overlay</code> function allows us to do exactly that.
   <code class="block">
-    (overlay image1 image2 ...)
+    (overlay image1 image2 ...) -> Image
   </code>
-  With overlay, objects appear directly on top of one another, with the first listed being the top-most visible one, through to the last on the bottom.
+  With <code>overlay</code>, objects appear directly on top of one another, with the first listed being the top-most visible one, through to the last on the bottom.
   <br>
   Let's try it out. Don't forget to name your image so that its easier to use later.
   <code class="block">
@@ -724,11 +733,12 @@ Try It<!DOCTYPE html>
   </code>
   What does the result look like?
   <img src="images/purple-star.png">
-  <br>
-  Now, overlay is not the only way to stack shapes and images.
-  Underlay is another option.
+</p>
+<p>
+  Now, <code>overlay</code> is not the only way to stack shapes and images.
+  <code>underlay</code> is another option.
   <code class="block">
-    (underlay image1 image2 ...)
+    (underlay image1 image2 ...) -> Image
   </code>
   In addition to having a similar template, this function operates very similarly, but in reverse order, with the first image listed appearing underneath all others.
   <br>
@@ -747,15 +757,16 @@ Try It<!DOCTYPE html>
   Here is what it looks like:
   <img src="images/blue-star.png">
   <br>
-  Do you see how the order of layers is reversed, as opposed to overlay?
-  <br>
+  Do you see how the order of layers is reversed, as opposed to <code>overlay</code>?
+</p>
+<p>
   Now we have two stars.
   <br>
   We want to create a scene with them and some of our previous images.
   There are many options for placing our images in a scene.
   But to do so, we are going to need to create a background on which to place them.
   <br>
-  The empty-scene function creates an outlined rectangle, a 'scene' on which to place things.
+  The <code>empty-scene</code> function creates an outlined rectangle, a 'scene' on which to place things.
   <code class="block">
       (empty-scene width height color)
   </code>
@@ -772,36 +783,42 @@ Try It<!DOCTYPE html>
   <br>
   To do this, we can use overlay, underlay, or one of their many variations:
   <code class="block">
-    (overlay/align x-place y-place image1 image2 ...)
-    (overlay/offset image1 x y image2)
-    (overlay/align/offset x-place y-place image1 x y image2)
-    (overlay/xy image1 x y image2)
+    (overlay/align x-place y-place image1 image2 ...) -> Image
+    (overlay/offset image1 x y image2) -> Image
+    (overlay/align/offset x-place y-place image1 x y image2) -> Image
+    (overlay/xy image1 x y image2) -> Image
     <br>
-    (underlay/align x-place y-place image1 image2 ...)
-    (underlay/offset image1 x y image2)
-    (underlay/align/offset x-place y-place image1 x y image2)
-    (underlay/xy image1 x y image2)
+    (underlay/align x-place y-place image1 image2 ...) -> Image
+    (underlay/offset image1 x y image2) -> Image
+    (underlay/align/offset x-place y-place image1 x y image2) -> Image
+    (underlay/xy image1 x y image2) -> Image
   </code>
-  As you can see, much like above and beside, overlay/align and underlay/align use and x-place and y-place to specify where to place an image in relation to another one.
+  As you can see, much like <code>above</code> and <code>beside</code>, <code>overlay/align</code> and <code>underlay/align</code> use an x-place and y-place to specify where to place an image in relation to another one.
   However, these functions require both an x and y place.
-  Why might this be?
+</p>
+<p>
+  <div class="question">
+    <div class="fa fa-question-circle" style="font-size:24px"></div>
+    Why might this be?
+  </div>
+</p>
+<p>
+  <code>overlay</code> and <code>underlay</code> also have some variations we haven't encountered before.
+  The <code>/offset</code> variation actually works similarly to that of <code>/align</code>, but instead of using a place on a particular axis, the function takes a numerical value.
   <br>
-  Overlay and underlay also have some variations we haven't encountered before.
-  The /offset variation actually works similarly to that of /align, but instead of using a place on a particular axis, the function takes a numerical value.
+  Given this fact, what do you think <code>/align/offset</code> might do?
   <br>
-  Given this fact, what do you think /align/offset might do?
-  <br>
-  The /xy variation may look similar to the previous functions, but it does something quite different.
+  The <code>/xy</code> variation may look similar to the previous functions, but it does something quite different.
   Instead of determining the amount by which the image is offset or aligned on a particular axis, the x and y positions exactly place the image at those coordinates.
   <br>
-  Now, there is one more major placement function we haven't covered: place-image.
+  Now, there is one more major placement function we haven't covered: <code>place-image</code>.
   <code class="block">
-    (place-image image x y scene)
-    (place-image/align image x y x-place y-place scene)
+    (place-image image x y scene) -> Image
+    (place-image/align image x y x-place y-place scene) -> Image
   </code>
-  Place-image, like overlay/xy, uses an x and a y coordinate to place an image.
+  <code>place-image</code>, like <code>overlay/xy</code>, uses an x and a y coordinate to place an image.
   The image is placed with the center at the specified coordinates.
-  Unlike overlay/xy, however, place-image crops the image so that fits within the background or scene.
+  Unlike <code>overlay/xy</code>, however, <code>place-image</code> crops the image so that fits within the background or scene.
   <br>
   We will use place image to create our final image:
   <code class="block">
@@ -810,15 +827,30 @@ Try It<!DOCTYPE html>
         (underlay/align "middle" "bottom"
           (overlay/offset purple-star -200 -125 sky)
             blue-star
-          )
-        )
-      )
-    )
   </code>
   Once everything is put together we have a full picture.
-  <br>
+</p>
+<p>
   <img src="images/place-image.png" width="90%">
-  <br>
+</p>
+
+<!-- Section 7 -->
+
+<i><h2 id="additionalchallenges">Additional Challenges</h2></i>
+
+<h4>Smiley Face</h4>
+<p>
+  Using what we've learned in this chapter, design a smiley face.
+  Try various facial expressions.
+  For an added challenge, try to make the smiley's color match your skin color by playing with the RGB values.
+</p>
+
+<h4>Flag</h4>
+<p>
+  Use the tools from this chapter to create an image of the United States flag.
+  Try to be as accurate as possible.
+  After that, try to replicate some other world flags.
+  (For really intricate shapes, do your best to approximate them using basic shapes.)
 </p>
 
 <!-- Footer -->
