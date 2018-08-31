@@ -38,10 +38,10 @@
 
 <h2 id="introduction"> Introduction</h2>
 <p>
-  The 2htdp/images and picturing-programs libraries provide built-in functions and primitives that allow you to produce simple graphics and even build complex illustrations.
+  The 2htdp/image and picturing-programs libraries provide built-in functions and primitives that allow you to produce simple graphics and even build complex illustrations.
 </p>
 <p>
-  The functions available in these libraries can be placed into a few broad categories for easier understanding and use.
+  The functions available in these libraries can be placed into a few broad categories for easier understanding and use, as you can see in the table of contents on the left.
 </p>
 <p>
   To download and install DrRacket on your computer, please visit this
@@ -52,7 +52,13 @@
 
 <h2 id="simpleshapes">Simple Shapes</h2>
 
-<p>
+  <p>
+  To use the code in this chapter include this line in your program before any other source code:
+  <code class="block">
+   (require 2htdp/image)
+  </code>
+  </p>
+  <p>
   Let's start with a basic circle, one of the easiest shapes to create.
   A circle only requires three parameters: <code>size</code>, <code>mode</code>, and <code>color</code>.
   We will see these parameters and this format repeated in the construction of other shapes, but what differentiates a circle is that the size is defined by the radius.
@@ -320,11 +326,11 @@
     (text/font string font-size color face family style weight underline?) &rarr; Image
   </code>
   <code class="block">
-    (text/font "Mars" 50 "hotpink" false 'system 'normal 'bold #t)
+    (text/font "Mars" 50 "hotpink" false "system" "normal" "bold" true)
   </code>
   <img src="images/mars-text.png"/>
   <code class="block">
-    (text/font "Venus" 50 "gold" #f 'modern 'italic 'normal #f)
+    (text/font "Venus" 50 "gold" false "roman" "italic" "normal" false)
   </code>
   <img src="images/venus-text.png"/>
 </p>
@@ -649,13 +655,18 @@
     (beside mars neptune)
   </code>
   <img src="images/beside-img.png">
+  
+  <div class="question">
+    Can you create an earth/moon-image with diameters to scale? Can you distance them to scale? (hint: how many earth diameters is the distance?)
+  </div>
+  
   <br>
   The <code>above</code> and <code>beside</code> functions have a variation we can call <code>/align</code>.
   <code class="block">
     (above/align x-place image1 image2 ...) &rarr; Image
   </code>
   <code class="block">
-      (beside/align y-place image1 image2 ...) &rarr; Image
+    (beside/align y-place image1 image2 ...) &rarr; Image
   </code>
   Take a look at the first parameter for each of these functions.
   <code>above/align</code> requires a string that specifies a place on the x-axis, such as "right" or "left", while <code>beside/align</code> requires a place on the y-axis like "top" or "bottom".
@@ -733,6 +744,7 @@
   What does the result look like?
   <img src="images/purple-star.png">
 </p>
+  
 <p>
   Now, <code>overlay</code> is not the only way to stack shapes and images.
   <code>underlay</code> is another option.
@@ -758,6 +770,13 @@
   <br>
   Do you see how the order of layers is reversed, as opposed to <code>overlay</code>?
 </p>
+  <p>
+    <div class="question">
+    Use <code>overlay</code> and <code>underlay</code> to see how a square with a side length of 150 compare to a circle with a radius of 80 (from the first section)
+  </div>
+  <br>
+  </p>
+
 <p>
   Now we have two stars.
   <br>
@@ -851,6 +870,16 @@
   (For really intricate shapes, do your best to approximate them using basic shapes.)
 </p>
 
+<!-- Acknowledgements -->
+
+<h2>Acknowledgments</h2>
+  <p>
+    We are grateful being able to stand of the shoulder of giants: Stephen Bloch, Mattihias Felleisen, Robert Bruce Findler, Matthew Flatt and Shriram Krishnamurthi. Theirs works: <a href="http://picturingprograms.com">Picturing Programs</a> (http://picturingprograms.com) and <a href="https://htdp.org">How to Design Programs</a> (https://htdp.org) will make generations better programmers.
+  </p>
+  <p>
+    We are also grateful for being able to use images available at <a href="https://www.freepngs.com/">freepngs.com</a>.
+  </p>
+
 <!-- Footer -->
 
 <div class="footer">
@@ -876,12 +905,6 @@
     AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-    </i>
-  </p>
-  <p>
-    <i>
-      All images sourced from
-      <a href="https://www.freepngs.com/">freepngs.com</a>
     </i>
   </p>
 </div>
